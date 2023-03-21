@@ -54,6 +54,7 @@ section{
     height: 90vh;
     width: 100%;
 }
+/* strona glowna */
 #main-content{
     width: 100%;
 }
@@ -74,6 +75,7 @@ section{
     animation: move 1s linear infinite;
     margin: .5em 0;
 }
+/* ruch strzalki gora dol */
 @keyframes move{
     0%{
         transform: translateY(-15px);
@@ -93,7 +95,7 @@ section{
     box-shadow: 2px 5px 10px rgba(0, 0,0,.2);
     padding: 1em 2em;
 }
-
+/* wybor */
 #type-of-randomize{
     padding: 10%;
     display: grid;
@@ -122,3 +124,292 @@ section{
 .type i{
     margin-left: 1em;
 }
+/* standard */
+#standard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#standard .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+#standard .text h2{
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+#standard .text .input{
+    margin-bottom: 2em;
+}
+#standard .text .input input{
+    width: 20em;
+    height: 2em;
+    font-size: 1.5em;
+    border-radius: 2em;
+    padding:1em;
+}
+#standard .text .input button{
+    width: 7em;
+    height: 2em;
+    font-size: 1.5em;
+    border-radius: 2em;
+    background-color: cornflowerblue;
+}
+#standard .text .added{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 1.5em;
+    column-gap: 1.5em;
+    margin-bottom: 2em;
+}
+.added .item{
+    border: 1px solid black;
+    border-radius: 2em;
+    padding: .5em 1em;
+    text-align: center;
+}
+#standard-button{
+    width: 20em;
+    height: 2em;
+    font-size: 1.5em;
+    background-color: aquamarine;
+    border-radius: 2em;
+}
+#standard .result h3{
+    font-size: 2.5em;
+}
+#standard-result{
+    list-style: decimal;
+}
+#standard-result li{
+    font-size: 1.5em;
+}
+.result .again{
+    margin: .25em;
+    width: 9em;
+    height: 2em;
+    font-size: 1.5em;
+    border-radius: 2em;
+    background-color: blueviolet;
+}
+/* kolo fortuny */
+#circle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#circle .text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+#circle .text h2 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+}
+
+#circle .text .input {
+    margin-bottom: 2em;
+}
+
+#circle .text .input input {
+    width: 20em;
+    height: 2em;
+    font-size: 1.5em;
+    border-radius: 2em;
+    padding: 1em;
+}
+
+#circle .text .input button {
+    width: 7em;
+    height: 2em;
+    font-size: 1.5em;
+    border-radius: 2em;
+    background-color: cornflowerblue;
+}
+
+#circle .text .added {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 1.5em;
+    column-gap: 1.5em;
+    margin-bottom: 2em;
+}
+#circle-button {
+    width: 20em;
+    height: 2em;
+    font-size: 1.5em;
+    background-color: aquamarine;
+    border-radius: 2em;
+}
+
+.circle-wrapper{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin-top: 50px;
+}
+.circle-wrapper::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url('./images/arrow-left-solid.svg') no-repeat;
+    background-size: 10%;
+    top: 44.1%;
+    left: 95%;
+}
+.circle{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    border: 10px solid black;
+    overflow: hidden;
+    animation: spin 5s cubic-bezier(.19, .86, .84, 1);
+}
+@keyframes spin{
+    0%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(3600deg);
+    }
+}
+.circle span{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+}
+.element1{
+    clip-path: polygon(0 17%, 0 50%, 50% 50%);
+    background-color: green;
+}
+.element2{
+    clip-path: polygon(0 17%, 30% 0, 50% 50%);
+    background-color: red;
+}
+.element3{
+    clip-path: polygon(30% 0, 71% 0, 50% 50%);
+    background-color: pink;
+}
+.element4{
+    clip-path: polygon(71% 0, 100% 18%, 50% 50%);
+    background-color: blue;
+}
+.element5{
+    clip-path: polygon(100% 18%, 100% 50%, 50% 50%);
+    background-color: purple;
+}
+.box1{
+    color: white;
+    font-size: 1.5em;
+}
+.box2{
+    color: white;
+    font-size: 1.5em;
+    width: 100%;
+    height: 100%;
+    transform: rotate(180deg);
+}
+.box1 .element1 h5{
+    position: absolute;
+    top: 39%;
+    right: 70%;
+    transform: rotate(200deg);
+    text-align: center;
+}
+.box1 .element2 h5{
+    position: absolute;
+    top: 25%;
+    right: 60%;
+    transform: rotate(-130deg);
+    text-align: center;
+}
+.box1 .element3 h5{
+    position: absolute;
+    top: 20%;
+    right: 40%;
+    transform: rotate(-90deg);
+    text-align: center;
+}
+.box1 .element4 h5{
+    position: absolute;
+    top: 26%;
+    right: 22%;
+    transform: rotate(-45deg);
+    text-align: center;
+}
+.box1 .element5 h5{
+    position: absolute;
+    top: 40%;
+    right: 15%;
+    transform: rotate(-15deg);
+    text-align: center;
+}
+.box2 .element1 h5{
+    position: absolute;
+    top: 39%;
+    right: 70%;
+    transform: rotate(200deg);
+    text-align: center;
+}
+.box2 .element2 h5{
+    position: absolute;
+    top: 25%;
+    right: 60%;
+    transform: rotate(-130deg);
+    text-align: center;
+}
+.box2 .element3 h5{
+    position: absolute;
+    top: 20%;
+    right: 40%;
+    transform: rotate(-90deg);
+    text-align: center;
+}
+.box2 .element4 h5{
+    position: absolute;
+    top: 26%;
+    right: 22%;
+    transform: rotate(-45deg);
+    text-align: center;
+}
+.box2 .element5 h5{
+    position: absolute;
+    top: 40%;
+    right: 15%;
+    transform: rotate(-15deg);
+    text-align: center;
+}
+.result-div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 20em;
+    width: 40em;
+    background-color: rgba(0, 0, 0, .9);
+    z-index: 1000;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.result-div h3{
+    font-size: 3em;
+    margin-bottom: 1.5em;
+}
+.result-div p{
+    font-size: 2.5em;
+    color: white;
+}
+

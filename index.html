@@ -43,7 +43,7 @@
                 <button id="start">Losuj!</button>
             </section>
 
-            <section id="type-of-randomize">
+            <section id="type-of-randomize" style="display:none">
                 <!-- wpisz => losuj -->
                 <div class="type">
                     <p>Losowanie Listy</p>
@@ -89,7 +89,7 @@
                 </div>
             </section>
             <!-- wpisz => losuj -->
-            <section id="standard">
+            <section id="standard" style="display:none">
                 <div class="text">
                     <h2>Wpisz pojedynczo co chcesz wylosować</h2>
                     <div class="input">
@@ -97,36 +97,66 @@
                         <button class="input-button">Dodaj</button>
                     </div>
                     <div class="added">
-
+                        <span class="item">pierwszy dodany tak na test</span>
+                        <span class="item">drugi dodany</span>
+                        <span class="item">trzeci dodany</span>
+                        <span class="item">czwarty dodany</span>
+                        <span class="item">piaty dodany</span>
+                        <span class="item">szosty dodany</span>
                     </div>
+                    <button id="standard-button">Losuj</button>
                 </div>
-                <div class="result-div">
+                <div class="result">
                     <h3>Oto wynik losowania : </h3>
-                    <p id="standard-result"></p>
+                    <ul id="standard-result">
+                        <li>peirwszy</li>
+                        <li>drugi</li>
+                        <li>trzeci</li>
+                        <li>czwarty</li>
+                    </ul>
+                    <button class="again" id="standard-again">Losuj Ponownie</button>
+                    <button class="again" id="standard-again-new">Losuj Inną Listę</button>
                 </div>
             </section>
             <!-- kolo -->
             <section id="circle">
-                <div class="text">
+                <div class="text" style="display:none">
                     <h2>Wpisz pojedynczo słowa, które chcesz umieścić na kole</h2>
                     <div class="input">
                         <input type="text" id="circle-input" placeholder="Co chcesz wylosować ...">
                         <button class="input-button">Dodaj</button>
                     </div>
                     <div class="added">
-
+                        <span class="item">pierwszy dodany tak na test</span>
+                        <span class="item">drugi dodany</span>
+                        <span class="item">trzeci dodany</span>
+                        <span class="item">czwarty dodany</span>
+                        <span class="item">piaty dodany</span>
+                        <span class="item">szosty dodany</span>
                     </div>
+                    <button id="circle-button">Losuj</button>
                 </div>
                 <div class="circle-wrapper">
-                    <ul class="circle">
-                        <li class="text">Element 1</li>
-                        <li class="text">Element 2</li>
-                        <li class="text">Element 3</li>
-                    </ul>
+                    <div class="circle"> 
+                        <div class="box1">
+                            <span class="element1"><h5>Element 1</h5></span>
+                            <span class="element2"><h5>Element 2</h5></span>
+                            <span class="element3"><h5>Element 3</h5></span>
+                            <span class="element4"><h5>Element 4</h5></span>
+                            <span class="element5"><h5>Element 5</h5></span>
+                        </div>
+                        <div class="box2">
+                            <span class="element1"><h5>Element 6</h5></span>
+                            <span class="element2"><h5>Element 7</h5></span>
+                            <span class="element3"><h5>Element 8</h5></span>
+                            <span class="element4"><h5>Element 9</h5></span>
+                            <span class="element5"><h5>Element 10</h5></span>    
+                        </div>
+                    </div>
                 </div>
                 <div class="result-div">
                     <h3>Oto wynik losowania:</h3>
-                    <p id="circle-result"></p>
+                    <p id="circle-result">element 1</p>
                 </div>
             </section>
             <!-- kolor -->
