@@ -36,7 +36,18 @@
             </ul>
         </aside>
         <article id="main-content">
-            <section id="main-page" style="display:none">
+            <div class="preloader-wrapper" style="display: none">
+                <div class="preloader" style="display: none">
+                    <span class="dot"></span>
+                    <div class="dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        
+            <section id="main-page">
                 <h1>Witaj na stronie Randomizer</h1>
                 <h2>Kliknij poniższy przycisk aby zacząć losowanie</h2>
                 <i class="fa-solid fa-arrow-down"></i>
@@ -45,42 +56,42 @@
 
             <section id="type-of-randomize" style="display:none">
                 <!-- wpisz => losuj -->
-                <div class="type">
+                <div class="type" id="list-type">
                     <p>Losowanie Listy</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <!-- kolo -->
-                <div class="type">
+                <div class="type" id="circle-type">
                     <p>Koło Fortuny</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <!-- losowy kolor (rgb, hsl, hsv, cmyk) -->
-                <div class="type">
+                <div class="type" id="color-type">
                     <p>Losowy Kolor</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <!-- losowy pies -->
-                <div class="type">
+                <div class="type" id="dog-type">
                     <p>Losowa Rasa Psa</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <!-- losowy cytat -->
-                <div class="type">
+                <div class="type" id="quote-type">
                     <p>Losowy Cytat</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <!-- losowa liczba -->
-                <div class="type">
+                <div class="type" id="number-type">
                     <p>Losowanie Liczb</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <!-- rzut moneta -->
-                <div class="type">
+                <div class="type" id="coin-type">
                     <p>Rzut Monetą</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
                 <!-- rzut koscmi -->
-                <div class="type">
+                <div class="type" id="dice-type">
                     <p>Rzut Kośćmi</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
@@ -97,29 +108,20 @@
                         <button class="input-button">Dodaj</button>
                     </div>
                     <div class="added">
-                        <span class="item">pierwszy dodany tak na test</span>
-                        <span class="item">drugi dodany</span>
-                        <span class="item">trzeci dodany</span>
-                        <span class="item">czwarty dodany</span>
-                        <span class="item">piaty dodany</span>
-                        <span class="item">szosty dodany</span>
                     </div>
                     <button id="standard-button">Losuj</button>
                 </div>
-                <div class="result">
+                <div class="result" style="display: none">
                     <h3>Oto wynik losowania : </h3>
                     <ul id="standard-result">
-                        <li>peirwszy</li>
-                        <li>drugi</li>
-                        <li>trzeci</li>
-                        <li>czwarty</li>
+
                     </ul>
                     <button class="again" id="standard-again">Losuj Ponownie</button>
                     <button class="again" id="standard-again-new">Losuj Inną Listę</button>
                 </div>
             </section>
             <!-- kolo -->
-            <section id="circle">
+            <section id="circle" style="display:none">
                 <div class="text" style="display:none">
                     <h2>Wpisz pojedynczo słowa, które chcesz umieścić na kole</h2>
                     <div class="input">
@@ -158,19 +160,44 @@
                     <h3>Oto wynik losowania:</h3>
                     <p id="circle-result">element 1</p>
                 </div>
+            </section>            
+            <!-- liczba -->
+            <section id="number" style="display:none">
+                <div class="text">
+                    <h2>Wylosuj liczbę</h2>
+                    <div class="switcher">
+                        <span>Liczba naturalna</span>
+                        <input type="checkbox" id="numberSwitch">
+                        <label for="numberSwitch"></label>
+                        <span>Liczba rzeczywista</span>
+                    </div>
+                    <div class="input">
+                        <label for="min">Wybierz minimalną liczbę: </label>
+                        <input type="number" id="min" value="0">
+                    </div>
+                    <div class="input">
+                        <label for="max">Wybierz maksymalną liczbę: </label>
+                        <input type="number" id="max" value="100">
+                    </div>
+                    <button id="number-button">Losuj</button>
+                </div>
+                <div class="result">
+                    <h3>Wylosowana liczba to: </h3>
+                    <p id="number-result">3</p>
+                </div>
             </section>
             <!-- kolor -->
-            <section id="color">
+            <section id="color" style="display:none">
                 <div class="text">
                     <h2>Kliknij przycisk, aby wygenerować losowy kolor</h2>
                     <button id="color-button">Generuj</button>
                 </div>
                 <div class="result">
-                    <p id="show-color"></p>
+                    <div id="show-color"></div>
                     <div class="color-codes">
                         <div id="rgb">
                             <strong>RGB: </strong>
-                            <small></small>
+                            <small>32,33,32</small>
                         </div>
                         <div id="hex">
                             <strong>HEX: </strong>
@@ -188,19 +215,18 @@
                 </div>
             </section>
             <!-- rasa psa -->
-            <section id="dog">
-                <div class="text">
+            <section id="dog" style="display:none">
+                <div class="text" style="display:none">
                     <h2>Kliknij przycisk, aby wygenerować losową rase psa</h2>
                     <button id="dog-button">Generuj</button>
                 </div>
                 <div class="result">
-                    <div class="result-wrapper">
-                        <img src=" " alt="dog">
-                        <p id="dog-name"></p>
+                    <div class="dog-info">
+                        <img src="https://source.unsplash.com/random" alt="dog">
+                        <p id="dog-name">mops</p>
                         <p id="life-expectancy">min_life_expectancy - max_life_expectancy</p>
                         <table>
                             <th>
-                                <td></td>
                                 <td>Samiec</td>
                                 <td>Samica</td>
                             </th>
@@ -263,7 +289,7 @@
                 </div>
             </section>
             <!-- cytat -->
-            <section id="quote">
+            <section id="quote" style="display:none">
                 <div class="text">
                     <h2>Kliknij przycisk, aby wygenerować losowy cytat</h2>
                     <button id="quote-button">Generuj</button>
@@ -271,44 +297,22 @@
                 <div class="result">
                     <h3>Wylosowany cytat to: </h3>
                     <blockquote cite="autor">
-                        tu cytat
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus assumenda officia enim labore velit soluta at aliquid quibusdam quae est a, ipsum cum, libero voluptate animi numquam maiores accusantium odio! Neque, facere minima nihil, quae ut aperiam ea perspiciatis molestias amet dignissimos saepe repellat cupiditate, aliquid voluptatum mollitia voluptas odit.
                     </blockquote>
-                </div>
-            </section>
-            <!-- liczba -->
-            <section id="number">
-                <div class="text">
-                    <h2>Wylosuj liczbę</h2>
-                    <div class="swither">
-                        <span>Liczba naturalna</span>
-                        <input type="chechbox">
-                        <span>Liczba rzeczywista</span>
-                    </div>
-                    <div class="input">
-                        <label for="min">Wybierz minimalną liczbę: </label>
-                        <input type="number" id="min" value="0">
-                    </div>
-                    <div class="input">
-                        <label for="max">Wybierz maksymalną liczbę: </label>
-                        <input type="number" id="max" value="100">
-                    </div>
-                    <button id="number-button">Losuj</button>
-                </div>
-                <div class="result">
-                    <h3>Wylosowana liczba to: </h3>
-                    <p id="number-result"></p>
+                    <span>jakis ziomek</span>
                 </div>
             </section>
             <!-- rzut moneta -->
-            <section id="coin">
+            <section id="coin" style="display:none">
 
             </section>
             <!-- rzut kośćmi -->
-            <section id="dice">
+            <section id="dice" style="display:none">
 
             </section>
         </article>
     </main>
     <footer></footer>
+    <script src="script.js"></script>
 </body>
 </html>
