@@ -37,11 +37,15 @@ function preloader(where){
 	}, 2000);
 }
 
-// LIST RANDOMIZER
+//============================================================= 
+//=============================================================
+                    // list randomizer
+//============================================================= 
+//============================================================= 
 // function for List randomization section (buttons listeners)
 function randomList(){
     let addButton = document.querySelector('.input-button');
-    // adding elements
+    // adding elements to added div
     addButton.addEventListener('click',()=>{
         let input = document.querySelector('#standard-input');
         let value = document.querySelector('#standard-input').value;
@@ -107,10 +111,9 @@ function randomiseList(){
 }
 
 
-const circleRandom = document.querySelector('#circle');
-const circle = document.querySelector('.circle');
 
 function randomCircle(){
+    
     let addButton = document.querySelector('#circle .input-button');
     // adding elements
     addButton.addEventListener('click',()=>{
@@ -122,21 +125,7 @@ function randomCircle(){
         added.innerHTML = value;
         addedContainer.appendChild(added);
         input.value ='';
-    })
-    // main randomize button
-    let randomizeButton = document.querySelector('#circle-button');
-    randomizeButton.addEventListener('click',()=>{
-        let inputSection = document.querySelector('#circle .text');
-        let resultSection = document.querySelector('#circle .circle-wrapper');
-        let number = document.querySelectorAll('#circle .added span')
-        inputSection.style.display = 'none';
-        resultSection.style.display = 'block';
-        createCircle(number.length)
-    })
-}
-//number of elements in the circle and add them to circle div
-function createCircle(number){
-// object with polygon shapes of each element depending on how many elements are there
+    })    
     let circleType = {
         "0":{
             "element1":{
@@ -182,10 +171,10 @@ function createCircle(number){
                 "clipPath": "polygon(75.5% 100%, 50% 100%, 0 100%, 50% 50%)"
             },
             "element4":{
-                "clipPath": "polygon(58% 0, 0 0, 0 24.5%, 50% 50%)"
+                "clipPath": "polygon(0 100%, 0 58%, 0 24.5%, 50% 50%)"
             },
             "element5":{
-                "clipPath": "polygon(0 100%, 0 58%, 0 24.5%, 50% 50%)"
+                "clipPath": "polygon(58% 0, 0 0, 0 24.5%, 50% 50%)"
             }
         } ,
         "4":{
@@ -319,34 +308,75 @@ function createCircle(number){
             },
         },
     }
+    // main randomize button
+    let randomizeButton = document.querySelector('#circle-button');
+    randomizeButton.addEventListener('click',()=>{
+        let inputSection = document.querySelector('#circle .text');
+        let resultSection = document.querySelector('#circle .circle-wrapper');
+        let number = document.querySelectorAll('#circle .added span')
+        let addedElements =[];
+        number.forEach(number=>{
+            addedElements.push(number.innerHTML)
+        })
+        inputSection.style.display = 'none';
+        resultSection.style.display = 'block';
+        createCircle(number.length, addedElements, circleType)
+    })    
+
+}
+//number of elements in the circle and add them to circle div
+function createCircle(number, array, circleType){
+    
+    let circle = document.querySelector('.circle');
+// object with polygon shapes of each element depending on how many elements are there
+
 //random degree of spin
     let degreeBase = 3600;
     let degree = Math.floor(Math.random()*360);
-    root.style.setProperty('--spin', `${degree}deg`);
-    console.log(degree + degreeBase)
-    // circle.style.setProperty('transform', `rotate(${degree}deg)`)
-//adding elements
+    root.style.setProperty('--spin', `${degreeBase + degree}deg`);
+    circle.style.setProperty('transform', `rotate(${degreeBase + degree}deg)`)
+    // creating legend of colors
+    let circleLegend = document.querySelector('#circle-legend ul')
+    array.forEach(colorElement=>{
+        let newElement = document.createElement('li')
+        newElement.innerHTML = colorElement;
+        circleLegend.appendChild(newElement);
+    })
+    //adding elements
+    circle.innerHTML = '';
     for(let i=0; i<number;i++){
         let element = document.createElement('span');
         let className = `element${i+1}`;
         element.classList.add(className);    
-        circle.appendChild(element);
+        circle.appendChild(element); 
+        console.log(circle);      
     }   
 //creating circle depending on how many elements there are  
     if(number === 2){
         let element1 = document.querySelector('.element1');
+        // console.log('element1', element1);
         let clipPathRoute1 = circleType[0].element1.clipPath;
+        // console.log('clipPathRoute1', clipPathRoute1);
         let element2 = document.querySelector('.element2');
         let clipPathRoute2 = circleType[0].element2.clipPath;
         element1.style.setProperty('clip-path',clipPathRoute1);        
         element2.style.setProperty('clip-path',clipPathRoute2);
         // who is the winner
         let winner = '';
-        if(degree>90 && degree<180){
-            winner = 'element2'
+        if(degree>90 && degree<270){
+            winner = array[1];
         }else{
-            winner = 'element1'
+            winner = array[0]
         }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`;            
+            circleBack();
+        },10000);
     }else if(number === 3){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[1].element1.clipPath;
@@ -360,12 +390,21 @@ function createCircle(number){
         
         let winner = '';
         if(degree>0 && degree<120){
-            winner = 'zielony'
+            winner = array[0]
         }else if(degree>120 && degree<240){
-            winner = 'niebieski'
+            winner = array[1]
         }else{
-            winner = 'czerowny'
+            winner = array[2]
         }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
     }else if(number === 4){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[2].element1.clipPath;
@@ -382,15 +421,23 @@ function createCircle(number){
         
         let winner = '';
         if(degree>45 && degree<135){
-            winner = 'fioletowy'
-        }else if(degree>90 && degree<180){
-            winner = 'niebieski'
-        }else if(degree>180 && degree<270){
-            winner = 'czerowny'
+            winner = array[3]
+        }else if(degree>136 && degree<226){
+            winner = array[2]
+        }else if(degree>227 && degree<317){
+            winner = array[1]
         }else{
-            winner = 'zielony'
+            winner = array[0]
         }
-        console.log(winner)
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
     }else if(number === 5){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[3].element1.clipPath;
@@ -406,7 +453,29 @@ function createCircle(number){
         element2.style.setProperty('clip-path',clipPathRoute2);  
         element3.style.setProperty('clip-path',clipPathRoute3);  
         element4.style.setProperty('clip-path',clipPathRoute4);  
-        element5.style.setProperty('clip-path',clipPathRoute5);  
+        element5.style.setProperty('clip-path',clipPathRoute5);
+        
+        let winner = '';
+        if(degree>62 && degree<136){
+            winner = array[3]
+        }else if(degree>=136 && degree<208){
+            winner = array[2]
+        }else if(degree>=208 && degree<280){
+            winner = array[1]
+        }else if(degree>=280 && degree<351){
+            winner = array[0]
+        }else{
+            winner = array[4]
+        }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
     }else if(number === 6){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[4].element1.clipPath;
@@ -425,7 +494,31 @@ function createCircle(number){
         element3.style.setProperty('clip-path',clipPathRoute3);  
         element4.style.setProperty('clip-path',clipPathRoute4);  
         element5.style.setProperty('clip-path',clipPathRoute5);  
-        element6.style.setProperty('clip-path',clipPathRoute6);  
+        element6.style.setProperty('clip-path',clipPathRoute6); 
+        
+        let winner ='';
+        if(degree>=30 && degree<90){
+            winner = array[4]
+        }else if(degree>=90 && degree<150){
+            winner = array[3]
+        }else if(degree>=150 && degree<210){
+            winner = array[2]
+        }else if(degree>=210 && degree<270){
+            winner = array[1]
+        }else if(degree>=270 && degree<330){
+            winner = array[0]
+        }else{
+            winner = array[5]
+        }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
     }else if(number === 7){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[5].element1.clipPath;
@@ -448,6 +541,32 @@ function createCircle(number){
         element5.style.setProperty('clip-path',clipPathRoute5);  
         element6.style.setProperty('clip-path',clipPathRoute6);  
         element7.style.setProperty('clip-path',clipPathRoute7);  
+
+        let winner ='';
+        if(degree>=14 && degree<62){
+            winner = array[5]
+        }else if(degree>=62 && degree<116){
+            winner = array[4]
+        }else if(degree>=116 && degree<169){
+            winner = array[3]
+        }else if(degree>=169 && degree<220){
+            winner = array[2]
+        }else if(degree>=220 && degree<271){
+            winner = array[1]
+        }else if(degree>=271 && degree<322){
+            winner = array[0]
+        }else{
+            winner = array[6]
+        }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
     }else if(number === 8){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[6].element1.clipPath;
@@ -473,6 +592,34 @@ function createCircle(number){
         element6.style.setProperty('clip-path',clipPathRoute6);  
         element7.style.setProperty('clip-path',clipPathRoute7);  
         element8.style.setProperty('clip-path',clipPathRoute8);  
+
+        let winner = '';
+        if(degree>=1 && degree<46){
+            winner = array[7]
+        }else if(degree>=46 && degree<91){
+            winner = array[6]
+        }else if(degree>=91 && degree<136){
+            winner = array[5]
+        }else if(degree>=136 && degree<181){
+            winner = array[4]
+        }else if(degree>=181 && degree<226){
+            winner = array[3]
+        }else if(degree>=226 && degree<271){
+            winner = array[2]
+        }else if(degree>=271 && degree<316){
+            winner = array[1]
+        }else{
+            winner = array[0]
+        }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
     }else if(number === 9){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[7].element1.clipPath;
@@ -500,7 +647,37 @@ function createCircle(number){
         element6.style.setProperty('clip-path',clipPathRoute6);  
         element7.style.setProperty('clip-path',clipPathRoute7);  
         element8.style.setProperty('clip-path',clipPathRoute8);  
-        element9.style.setProperty('clip-path',clipPathRoute9);  
+        element9.style.setProperty('clip-path',clipPathRoute9); 
+        
+        let winner = '';
+        if(degree>=1 && degree<40){
+            winner = array[8]
+        }else if(degree>=40 && degree<81){
+            winner = array[7]
+        }else if(degree>=81 && degree<120){
+            winner = array[6]
+        }else if(degree>=120 && degree<159){
+            winner = array[5]
+        }else if(degree>=159 && degree<200){
+            winner = array[4]
+        }else if(degree>=200 && degree<240){
+            winner = array[3]
+        }else if(degree>=240 && degree<281){
+            winner = array[2]
+        }else if(degree>=281 && degree<320){
+            winner = array[1]
+        }else{
+            winner = array[0]
+        }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
     }else if(number === 10){
         let element1 = document.querySelector('.element1');
         let clipPathRoute1 = circleType[8].element1.clipPath;
@@ -532,7 +709,70 @@ function createCircle(number){
         element8.style.setProperty('clip-path',clipPathRoute8);  
         element9.style.setProperty('clip-path',clipPathRoute9);  
         element10.style.setProperty('clip-path',clipPathRoute10);  
-    } 
+
+        let winner = '';
+        if(degree>=1 && degree<37){
+            winner = array[9]
+        }else if(degree>=37 && degree<73){
+            winner = array[8]
+        }else if(degree>=73 && degree<109){
+            winner = array[7]
+        }else if(degree>=109 && degree<145){
+            winner = array[6]
+        }else if(degree>=145 && degree<181){
+            winner = array[5]
+        }else if(degree>=181 && degree<217){
+            winner = array[4]
+        }else if(degree>=217 && degree<252){
+            winner = array[3]
+        }else if(degree>=252 && degree<288){
+            winner = array[2]
+        }else if(degree>=288 && degree<324){
+            winner = array[1]
+        }else{
+            winner = array[0]
+        }
+        setTimeout( ()=>{
+            let result = document.querySelector('.result-div')
+            result.style.display = 'flex';
+            circleLegend.style.display = 'none';
+            result.innerHTML = `<i class="fas fa-arrow-left"></i>
+                                <h3>Oto wynik losowania:</h3>
+                                <p id="circle-result">${winner}</p>`
+            circleBack();
+        },10000);
+    }
+
+    
+}
+function circleBack(){
+    let circleRandom = document.querySelector('#circle');
+
+    let circleBack = document.querySelector('#circle .result-div i')
+    circleBack.addEventListener('click',()=>{
+        circleRandom.innerHTML = 
+        `<div class="text" >
+                    <h2>Wpisz pojedynczo słowa, które chcesz umieścić na kole</h2>
+                    <div class="input">
+                        <input type="text" id="circle-input" placeholder="Co chcesz wylosować ...">
+                        <button class="input-button">Dodaj</button>
+                    </div>
+                    <div class="added"></div>
+                    <button id="circle-button">Losuj</button>
+                </div>
+                <div class="circle-wrapper" style="display:none">
+                    <div id="circle-legend">
+                        <ul>
+                            
+                        </ul>
+                    </div>
+                    <i class="fas fa-down-long"></i>
+                    <div class="circle"></div>
+                </div>
+                <div class="result-div" style="display: none"></div>
+        `;
+        randomCircle();
+    }) 
 }
 mainPageButton.addEventListener('click',()=>{
     displayNone();
@@ -549,6 +789,7 @@ listType.addEventListener('click',()=>{
 })
 circleType.addEventListener('click',()=>{
     displayNone();
+    let circleRandom = document.querySelector('#circle');
     circleRandom.style.display='flex';
     randomCircle()
 })

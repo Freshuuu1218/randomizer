@@ -323,6 +323,27 @@ section{
     height: 500px;
     margin-top: 50px;
 }
+#circle-legend{
+    position: absolute;
+    top: -30%;
+    left: -60%;
+    font-size: 1em;
+}
+#circle-legend ul{
+    background-color: rgba(0, 0, 0, .2);
+    padding: 1.5em;
+    border-radius: 1em;
+}
+.circle-wrapper i{
+    text-shadow: 0 10px 15px rgba(0, 0, 0, .8);
+    color: gold;
+    font-size: 5em;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
 .circle{
     width: 100%;
     height: 100%;
@@ -332,6 +353,7 @@ section{
     overflow: hidden;
     animation: spin 9s cubic-bezier(0, 0, .23, 1);
 }
+
 .circle::after{
     content: '';
     width: 40px;
@@ -344,292 +366,95 @@ section{
     background-color: black;
     z-index: 100;
 }
-/* @keyframes spin{
+@keyframes spin{
     0%{
         transform: rotate(0);
     }
     100%{
         transform: rotate(var(--spin));
     }
-} */
+}
 .circle span{
     width: 100%;
     height: 100%;
     display: inline-block;
     position: absolute;
 }
-/* ============================ */
-/* 2 elementy */
-/* ============================ */
-/* .element1{
-    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
-    background-color: green;
-}
-.element2{
-    clip-path: polygon(0 100%, 100% 100%, 100% 50%, 0 50%);
-    background-color: red;
-} */
-/* ============================ */
-/* 3 elementy */
-/* ============================ */
-/* .element1{
-    clip-path: polygon(50% 0, 0 0, 0 79%, 50% 50%);
-    background-color: green;
-}
-.element2{
-    clip-path: polygon(0 79%, 50% 130%, 100% 79%, 50% 50%);
-    background-color: blue;
-}
-.element3{
-    clip-path: polygon(50% 0, 100% 0, 100% 79%, 50% 50%);
-    background-color: red;
-} */
-/* ============================ */
-/* 4 elementy */
-/* ============================ */
-/* .element1{
-    clip-path: polygon(0 0, 50% 0, 100% 0, 50% 50%);
-    background-color: green;
-}
-.element2{
-    clip-path: polygon(100% 100%, 100% 50%, 100% 0, 50% 50%);
-    background-color: blue;
-}
-.element3{
-    clip-path: polygon(100% 100%, 50% 100%, 0 100%, 50% 50%);
+/* .circle span:nth-child(odd){
     background-color: red;
 }
-.element4{
-    clip-path: polygon(0 0, 0 50%, 0 100%, 50% 50%);
-    background-color: purple;
-} */
-/* ============================ */
-/* 5 elementow */
-/* ============================ */
-/* .element1{
-    clip-path: polygon(57.75% 0, 100% 0, 100% 42%, 50% 50%);
+.circle span:nth-child(even){
     background-color: green;
-}
-.element2{
-    clip-path: polygon(75.5% 100%, 100% 100%, 100% 42%, 50% 50%);
-    background-color: blue;
-}
-.element3{
-    clip-path: polygon(75.5% 100%, 50% 100%, 0 100%, 50% 50%);
-    background-color: red;
-}
-.element4{
-    clip-path: polygon(58% 0, 0 0, 0 24.5%, 50% 50%);
-    background-color: purple;
-}
-.element5{
-    clip-path: polygon(0 100%, 0 58%, 0 24.5%, 50% 50%);
-    background-color: pink;
 } */
-/* ============================ */
-/* 6 elementow */
-/* ============================ */
-/* .element1 {
-    clip-path: polygon(100% 50%, 100% 0, 79% 0, 50% 50%);
-    background-color: green;
-}
-
-.element2 {
-    clip-path: polygon(100% 50%, 100% 100%, 79% 100%, 50% 50%);
-    background-color: blue;
-}
-
-.element3 {
-    clip-path: polygon(21% 100%, 50% 100%, 79% 100%, 50% 50%);
-    background-color: red;
-}
-
-.element4 {
-    clip-path: polygon(21% 100%, 0 100%, 0 50%, 50% 50%);
-    background-color: purple;
-}
-
-.element5 {
-    clip-path: polygon(21% 0, 0 0, 0 50%, 50% 50%);
-    background-color: pink;
-}
-.element6 {
-    clip-path: polygon(21% 0, 50% 0, 79% 0, 50% 50%);
-    background-color: orange;
-} */
-/* ============================ */
-/* 7 elementow */
-/* ============================ */
-/* .element1 {
-    clip-path: polygon(90% 0, 100% 0, 100% 50%, 50% 50%);
-    background-color: green;
-}
-
-.element2 {
-    clip-path: polygon(90% 100%, 100% 100%, 100% 50%, 50% 50%);
-    background-color: blue;
-}
-
-.element3 {
-    clip-path: polygon(90% 100%, 50% 100%, 39% 100%, 50% 50%);
-    background-color: red;
-}
-
-.element4 {
-    clip-path: polygon(0 75%, 0 100%, 39% 100%, 50% 50%);
-    background-color: purple;
-}
-
-.element5 {
-    clip-path: polygon(0 75%, 0 50%, 0 25%, 50% 50%);
-    background-color: pink;
-}
-
-.element6 {
-    clip-path: polygon(38% 0, 0 0, 0 25%, 50% 50%);
-    background-color: orange;
-}
-.element7 {
-    clip-path: polygon(38% 0, 50% 0, 90% 0, 50% 50%);
-    background-color: yellow;
-} */
-/* ============================ */
-/* 8 elementow */
-/* ============================ */
-/* .element1 {
-    clip-path: polygon(50% 0, 50% 0, 100% 0, 50% 50%);
-    background-color: green;
-}
-
-.element2 {
-    clip-path: polygon(100% 50%, 100% 50%, 100% 0, 50% 50%);
-    background-color: blue;
-}
-
-.element3 {
-    clip-path: polygon(100% 50%, 100% 50%, 100% 100%, 50% 50%);
-    background-color: red;
-}
-
-.element4 {
-    clip-path: polygon(50% 100%, 100% 100%, 100% 100%, 50% 50%);
-    background-color: purple;
-}
-
-.element5 {
-    clip-path: polygon(50% 100%, 50% 100%, 0 100%, 50% 50%);
-    background-color: pink;
-}
-
-.element6 {
-    clip-path: polygon(0 50%, 0 50%, 0 100%, 50% 50%);
-    background-color: orange;
-}
-
-.element7 {
-    clip-path: polygon(0 50%, 0 50%, 0 0, 50% 50%);
-    background-color: yellow;
-}
-.element8 {
-    clip-path: polygon(50% 0, 50% 0, 0 0, 50% 50%);
-    background-color: cyan;
-} */
-/* ============================ */
-/* 9 elementow */
-/* ============================ */
-/* .element1 {
-    clip-path: polygon(50% 0, 93% 0, 93% 0, 50% 50%);
-    background-color: green;
-}
-
-.element2 {
-    clip-path: polygon(100% 41%, 93% 0, 93% 0, 50% 50%);
-    background-color: blue;
-}
-
-.element3 {
-    clip-path: polygon(100% 41%, 100% 79%, 100% 79%, 50% 50%);
-    background-color: red;
-}
-
-.element4 {
-    clip-path: polygon(67% 100%, 100% 79%, 100% 79%, 50% 50%);
-    background-color: purple;
-}
-
-.element5 {
-    clip-path: polygon(67% 100%, 30% 100%, 30% 100%, 50% 50%);
-    background-color: pink;
-}
-
-.element6 {
-    clip-path: polygon(0 77%, 30% 100%, 30% 100%, 50% 50%);
-    background-color: orange;
-}
-
-.element7 {
-    clip-path: polygon(0 77%, 0 41%, 0 41%, 50% 50%);
-    background-color: yellow;
-}
-
-.element8 {
-    clip-path: polygon(10% 0, 0 41%, 0 41%, 50% 50%);
-    background-color: cyan;
-}
-.element9 {
-    clip-path: polygon(10% 0, 50% 0, 50% 0, 50% 50%);
-    background-color: rgb(26, 23, 123);
-} */
-/* ============================ */
-/* 10 elementow */
-/* ============================ */
 .element1 {
-    clip-path: polygon(86% 0, 50% 0, 50% 0, 50% 50%);
     background-color: green;
+}
+#circle-legend ul{
+    list-style: none;
+}
+#circle-legend ul li:first-child{
+    color: green
 }
 
 .element2 {
-    clip-path: polygon(86% 0, 100% 34%, 100% 34%, 50% 50%);
     background-color: blue;
+}
+#circle-legend ul li:nth-child(2){
+    color: blue;
 }
 
 .element3 {
-    clip-path: polygon(100% 67%, 100% 34%, 100% 34%, 50% 50%);
     background-color: red;
 }
-
+#circle-legend ul li:nth-child(3) {
+    color: red;
+}
 .element4 {
-    clip-path: polygon(100% 67%, 86% 100%, 86% 100%, 50% 50%);
     background-color: purple;
+}
+#circle-legend ul li:nth-child(4) {
+    color: purple;
 }
 
 .element5 {
-    clip-path: polygon(50% 100%, 50% 100%, 86% 100%, 50% 50%);
     background-color: pink;
+}
+#circle-legend ul li:nth-child(5) {
+    color: pink;
 }
 
 .element6 {
-    clip-path: polygon(50% 100%, 50% 100%, 14% 100%, 50% 50%);
     background-color: orange;
+}
+#circle-legend ul li:nth-child(6) {
+    color: orange;
 }
 
 .element7 {
-    clip-path: polygon(0 66%, 0 66%, 14% 100%, 50% 50%);
     background-color: yellow;
+}
+#circle-legend ul li:nth-child(7) {
+    color: yellow;
 }
 
 .element8 {
-    clip-path: polygon(0 66%, 0 66%, 0 34%, 50% 50%);
     background-color: cyan;
+}
+#circle-legend ul li:nth-child(8) {
+    color: cyan;
 }
 
 .element9 {
-    clip-path: polygon(14% 0, 14% 0, 0 34%, 50% 50%);
     background-color: rgb(26, 23, 123);
+}
+#circle-legend ul li:nth-child(9) {
+    color: rgb(26, 23, 123);
 }
 .element10 {
-    clip-path: polygon(14% 0, 14% 0, 50% 0, 50% 50%);
     background-color: rgb(169, 38, 95);
+}
+#circle-legend ul li:nth-child(10) {
+    color: rgb(169, 38, 95);
 }
 #circle .result-div{
     position: absolute;
@@ -646,6 +471,13 @@ section{
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+#circle .result-div i{
+    color: #000;
+    position: absolute;
+    top: -70%;
+    left: -35%;
+    font-size: 3em;
 }
 #circle .result-div h3{
     font-size: 3em;
