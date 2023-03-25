@@ -111,7 +111,11 @@ function randomiseList(){
 }
 
 
-
+//============================================================= 
+//=============================================================
+                    // circle randomizer
+//============================================================= 
+//============================================================= 
 function randomCircle(){
     
     let addButton = document.querySelector('#circle .input-button');
@@ -745,6 +749,7 @@ function createCircle(number, array, circleType){
 
     
 }
+// function for use randomizer multiple times
 function circleBack(){
     let circleRandom = document.querySelector('#circle');
 
@@ -774,6 +779,144 @@ function circleBack(){
         randomCircle();
     }) 
 }
+
+//============================================================= 
+//=============================================================
+                    // number randomizer
+//============================================================= 
+//============================================================= 
+const min = document.querySelector('#min').value;
+const max = document.querySelector('#max').value;
+const decimal = document.querySelector('#decimal').value;
+const decimalInput = document.querySelector('#decimal');
+const numberRandom = document.querySelector('#number')
+const numberButton = document.querySelector('#number-button');
+const checkbox = document.querySelector('#numberSwitch');
+const numberResult = document.querySelector('#number-result');
+checkbox.addEventListener('input',()=>{
+        if(checkbox.checked){
+        decimalInput.disabled = false;
+    }else{
+        decimalInput.disabled = true;
+    }
+})
+numberButton.addEventListener('click',()=>{
+    const min = document.querySelector('#min').value;
+    const max = document.querySelector('#max').value;
+    const decimal = document.querySelector('#decimal').value;
+    if(checkbox.checked){
+        randomRealNumber(min,max,decimal);
+    }else{
+        randomInteger(min,max)
+    }
+})
+
+function randomInteger(min,max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+    numberResult.innerHTML = result;
+}
+function randomRealNumber(min,max,decimal){
+    let random = Math.random() * (max - min + 1) + min;
+    random*=1;
+    let result = random.toFixed(decimal);
+    numberResult.innerHTML = result;
+
+}
+//============================================================= 
+//=============================================================
+                    // color randomizer
+//============================================================= 
+//============================================================= 
+const colorRandom = document.querySelector('#color');
+const colorButton = document.querySelector('#color-button');
+const rgbResult = document.querySelector('#rgb small');
+const hexResult = document.querySelector('#hex small');
+const hslResult = document.querySelector('#hsl small');
+const cmykResult = document.querySelector('#cmyk small');
+const resultColorCircle = document.querySelector('#show-color');
+function randomColor(){
+    function random(min,max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+    return result;
+}
+let r = random(1,255);
+let g = random(1,255);
+let b = random(1,255);
+
+rgbResult.innerHTML = `${r}, ${g}, ${b}`;
+resultColorCircle.style.backgroundColor = `rgb(${r}, ${g}, ${b})`
+rgbToHex(r,g,b);
+rgbToHsl(r,g,b);
+rgbToCmyk(r,g,b);
+}
+colorButton.addEventListener('click',()=>{
+randomColor();
+})
+
+function rgbToHex(r,g,b) {
+    let rResult = r.toString(16);
+    if(rResult.length == 1){
+        rResult = '0'+rResult;
+        +rResult;  
+    }
+    let gResult = g.toString(16);
+    if(gResult.length == 1){
+        gResult = '0'+gResult;
+        +gResult;  
+    }
+    let bResult = b.toString(16);
+    if(bResult.length == 1){
+        bResult = '0'+bResult;
+        +bResult;  
+    }
+
+    let result = rResult + gResult + bResult
+    hexResult.innerHTML = `#${result}`;
+}
+function rgbToHsl(r,g,b){
+r /= 255; g /= 255; b /= 255;
+  let max = Math.max(r, g, b);
+  let min = Math.min(r, g, b);
+  let d = max - min;
+  let h;
+  if (d === 0) h = 0;
+  else if (max === r) h = ((((g - b) / d) % 6)+6)%6;
+  else if (max === g) h = (b - r) / d + 2;
+  else if (max === b) h = (r - g) / d + 4;
+  let l = (min + max) / 2;
+  let s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+  let hResult = (h*60).toFixed(0);
+  let sResult = (s*100).toFixed(0);
+  let lResult = (l*100).toFixed(0);
+  
+  hslResult.innerHTML= `${hResult}°, ${sResult}%, ${lResult}%`;
+};
+function rgbToCmyk(r, g, b) {
+    var c = 1 - (r / 255);
+    var m = 1 - (g / 255);
+    var y = 1 - (b / 255);
+    var k = Math.min(c, Math.min(m, y));
+    
+    c = (c - k) / (1 - k);
+    m = (m - k) / (1 - k);
+    y = (y - k) / (1 - k);
+    
+    c = isNaN(c) ? 0 : c;
+    m = isNaN(m) ? 0 : m;
+    y = isNaN(y) ? 0 : y;
+    k = isNaN(k) ? 0 : k;
+    cmykResult.innerHTML = `${c.toFixed(2)},&nbsp; ${m.toFixed(2)},&nbsp; ${y.toFixed(2)},&nbsp; ${k.toFixed(2)}`
+}
+//============================================================= 
+//=============================================================
+                    // dog randomizer
+//============================================================= 
+//============================================================= 
+// section displayers
 mainPageButton.addEventListener('click',()=>{
     displayNone();
     mainPage.style.display = 'flex';
@@ -793,9 +936,20 @@ circleType.addEventListener('click',()=>{
     circleRandom.style.display='flex';
     randomCircle()
 })
+numberType.addEventListener('click',()=>{
+    let checkbox = document.querySelector('#numberSwitch');
+    displayNone();
+    numberRandom.style.display='flex';
+    // if(checkbox.checked){
+    //     randomRealNumber();
+    // }else{
+    //     randomInteger();
+    // }
+})
 colorType.addEventListener('click',()=>{
     displayNone();
     colorRandom.style.display='flex';
+    randomColor();
 })
 dogType.addEventListener('click',()=>{
     displayNone();
@@ -805,10 +959,7 @@ quoteType.addEventListener('click',()=>{
     displayNone();
     quoteRandom.style.display='flex';
 })
-numberType.addEventListener('click',()=>{
-    displayNone();
-    numberRandom.style.display='flex';
-})
+
 coinType.addEventListener('click',()=>{
     displayNone();
     coinRandom.style.display='flex';

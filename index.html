@@ -65,6 +65,11 @@
                     <p>Koło Fortuny</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
+                <!-- losowa liczba -->
+                <div class="type" id="number-type">
+                    <p>Losowanie Liczb</p>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
                 <!-- losowy kolor (rgb, hsl, hsv, cmyk) -->
                 <div class="type" id="color-type">
                     <p>Losowy Kolor</p>
@@ -80,11 +85,7 @@
                     <p>Losowy Cytat</p>
                     <i class="fa-solid fa-arrow-right"></i>
                 </div>
-                <!-- losowa liczba -->
-                <div class="type" id="number-type">
-                    <p>Losowanie Liczb</p>
-                    <i class="fa-solid fa-arrow-right"></i>
-                </div>
+
                 <!-- rzut moneta -->
                 <div class="type" id="coin-type">
                     <p>Rzut Monetą</p>
@@ -147,7 +148,7 @@
                 <div class="text">
                     <h2>Wylosuj liczbę</h2>
                     <div class="switcher">
-                        <span>Liczba naturalna</span>
+                        <span>Liczba całkowita</span>
                         <input type="checkbox" id="numberSwitch">
                         <label for="numberSwitch"></label>
                         <span>Liczba rzeczywista</span>
@@ -160,11 +161,15 @@
                         <label for="max">Wybierz maksymalną liczbę: </label>
                         <input type="number" id="max" value="100">
                     </div>
+                    <div class="input">
+                        <label for="decimal">Wybierz ilość liczb po przecinku: </label>
+                        <input type="number" id="decimal" value="2" disabled>
+                    </div>
                     <button id="number-button">Losuj</button>
                 </div>
                 <div class="result">
                     <h3>Wylosowana liczba to: </h3>
-                    <p id="number-result">3</p>
+                    <p id="number-result"></p>
                 </div>
             </section>
             <!-- kolor -->
