@@ -183,7 +183,7 @@
                     <div class="color-codes">
                         <div id="rgb">
                             <strong>RGB: </strong>
-                            <small>32,33,32</small>
+                            <small></small>
                         </div>
                         <div id="hex">
                             <strong>HEX: </strong>
@@ -202,15 +202,11 @@
             </section>
             <!-- rasa psa -->
             <section id="dog" style="display:none">
-                <div class="text" style="display:none">
-                    <h2>Kliknij przycisk, aby wygenerować losową rase psa</h2>
-                    <button id="dog-button">Generuj</button>
-                </div>
                 <div class="result">
                     <div class="dog-info">
-                        <img src="https://source.unsplash.com/random" alt="dog">
-                        <p id="dog-name">mops</p>
-                        <p id="life-expectancy">min_life_expectancy - max_life_expectancy</p>
+                        <img src=" " alt="dog" id="dog-image">
+                        <p id="dog-name"></p>
+                        <p id="life-expectancy"></p>
                         <table>
                             <th>
                                 <td>Samiec</td>
@@ -218,60 +214,41 @@
                             </th>
                             <tr>
                                 <td><strong>Wysokość</strong></td>
-                                <td>min_height_male - max_height_male</td> <!-- w inch (zamienic przed wpisaniem)-->
-                                <td>min_height_female - max_height_female</td> <!-- w inch (zamienic przed wpisaniem)-->
+                                <td id="male-height"></td> 
+                                <td id="female-height"></td> 
                             </tr>
                             <tr>
                                 <td><strong>Waga</strong></td>
-                                <td>min_weight_male - max_weight_male</td> <!-- w pounds (zamienic przed wpisaniem)-->
-                                <td>min_weight_female - max_weight_female</td> <!-- w pounds (zamienic przed wpisaniem)-->
+                                <td id="male-weight"></td> 
+                                <td id="female-weight"></td> 
                             </tr>
                         </table>
+                    </div>
+                    <div class="dog-ratings">
                         <ul class="ratings">
-                            <li>
+                            <li id="energy-rate">
                                 <strong>Energia: </strong> 
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
                             </li>
-                            <li>
+                            <li id="barking-rate">
                                 <strong>Szczekliwość: </strong> 
-                                <i class="fa-solid fa-paw"></i>
+                                
                             </li>
-                            <li>
+                            <li id="trainability-rate">
                                 <strong>Łatwość tresury: </strong> 
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
+
                             </li>
-                            <li>
+                            <li id="children-rate">
                                 <strong>Stosunek do dzieci: </strong> 
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
                             </li>
-                            <li>
+                            <li id="other-rate">
                                 <strong>Stosunek do innych psów: </strong> 
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
                             </li>
-                            <li>
+                            <li id="strangers-rate">
                                 <strong>Stosunek do obcych: </strong> 
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
-                                <i class="fa-solid fa-paw"></i>
                             </li>
                         </ul>
                     </div>
+                    <button id="other-dog">Losuj nowego psa</button>
                 </div>
             </section>
             <!-- cytat -->
