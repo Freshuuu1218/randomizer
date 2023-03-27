@@ -1379,6 +1379,37 @@ function randomQuote(data){
 function newQuote(data) { 
     console.log(data)
 }
+
+//============================================================= 
+//=============================================================
+                    // coin randomizer
+//============================================================= 
+//============================================================= 
+const coinRandom = document.querySelector('#coin')
+function coinFlip(){
+    let flip = document.querySelector('#coin-button');
+    let heads = document.querySelector('#heads')
+    let tails = document.querySelector('#tails')
+    let resultElement = document.querySelector('#coin-result');
+    let coin = document.querySelector('#coin-random');
+    setTimeout(()=>{
+        if(Math.random()< .5){
+        coin.classList.add('animate-heads')
+        resultElement.innerHTML = 'HEADS'
+        coin.classList.remove('animate-tails')   
+    }else{
+        coin.classList.add('animate-tails')
+        resultElement.innerHTML = 'TAILS'
+        coin.classList.remove('animate-heads')
+    }
+    },0)
+    flip.addEventListener('click', ()=>{
+        coinFlip();
+        coin.classList.remove('animate-heads')
+        coin.classList.remove('animate-tails')
+    })
+}
+
 // section displayers
 mainPageButton.addEventListener('click',()=>{
     displayNone();
@@ -1428,6 +1459,7 @@ quoteType.addEventListener('click',()=>{
 coinType.addEventListener('click',()=>{
     displayNone();
     coinRandom.style.display='flex';
+    coinFlip();
 })
 diceType.addEventListener('click',()=>{
     displayNone();
