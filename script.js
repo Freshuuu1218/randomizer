@@ -914,422 +914,470 @@ function rgbToCmyk(r, g, b) {
 //============================================================= 
 //=============================================================
                     // dog randomizer
+                    // working
 //============================================================= 
 //============================================================= 
-const dogRandom = document.querySelector('#dog')
-const apiKey = 'QFN4g+jpk38etypKU3z46A==QapTBXHbitWz4QVV'
-const dogBreeds =[
-    'Affenpinscher',
-    'Afghan Hound',
-    'Airedale Terrier',
-    'Akita',
-    'Alaskan Klee Kai',
-    'Alaskan Malamute',
-    'American English Coonhound',
-    'American Eskimo Dog',
-    'American Foxhound',
-    'American Hairless Terrier',
-    'American Leopard Hound',
-    'American Staffordshire Terrier',
-    'American Water Spaniel',
-    'Anatolian Shepherd Dog',
-    'Appenzeller Sennenhund',
-    'Australian Cattle Dog',
-    'Australian Kelpie',
-    'Australian Shepherd',
-    'Australian Stumpy Tail Cattle Dog',
-    'Australian Terrier',
-    'Azawakh',
-    'Barbado da Terceira',
-    'Barbet',
-    'Basenji',
-    'Basset Fauve de Bretagne',
-    'Basset Hound',
-    'Bavarian Mountain Scent Hound',
-    'Beagle',
-    'Bearded Collie',
-    'Beauceron',
-    'Bedlington Terrier',
-    'Belgian Laekenois',
-    'Belgian Malinois',
-    'Belgian Sheepdog',
-    'Belgian Tervuren',
-    'Bergamasco Sheepdog',
-    'Berger Picard',
-    'Bernese Mountain Dog',
-    'Bichon Frise',
-    'Biewer Terrier',
-    'Black and Tan Coonhound',
-    'Black Russian Terrier',
-    'Bloodhound',
-    'Bluetick Coonhound',
-    'Boerboel',
-    'Bohemian Shepherd',
-    'Bolognese',
-    'Border Collie',
-    'Border Terrier',
-    'Borzoi',
-    'Boston Terrier',
-    'Bouvier des Flandres',
-    'Boxer',
-    'Boykin Spaniel',
-    'Bracco Italiano',
-    'Braque du Bourbonnais',
-    'Braque Francais Pyrenean',
-    'Briard',
-    'Brittany',
-    'Broholmer',
-    'Brussels Griffon',
-    'Bulldog',
-    'Bull Terrier',
-    'Bullmastiff',
-    'Cairn Terrier',
-    'Canaan Dog',
-    'Cane Corso',
-    'Cardigan Welsh Corgi',
-    'Carolina Dog',
-    'Catahoula Leopard Dog',
-    'Caucasian Shepherd Dog',
-    'Cavalier King Charles Spaniel',
-    'Central Asian Shepherd Dog',
-    'Cesky Terrier',
-    'Chesapeake Bay Retriever',
-    'Chihuahua',
-    'Chinese Crested',
-    'Chinese Shar-Pei',
-    'Chinook',
-    'Chow Chow',
-    "Cirneco dell'Etna",
-    'Clumber Spaniel',
-    'Cocker Spaniel',
-    'Collie',
-    'Coton de Tulear',
-    'Croatian Sheepdog',
-    'Curly-Coated Retriever',
-    'Czechoslovakian Vlcak',
-    'Dachshund',
-    'Dalmatian',
-    'Dandie Dinmont Terrier',
-    'Danish-Swedish Farmdog',
-    'Deutscher Wachtelhund',
-    'Doberman Pinscher',
-    'Dogo Argentino',
-    'Dogue de Bordeaux',
-    'Drentsche Patrijshond',
-    'Drever',
-    'Dutch Shepherd',
-    'English Cocker Spaniel',
-    'English Foxhound',
-    'English Setter',
-    'English Springer Spaniel',
-    'English Toy Spaniel',
-    'Entlebucher Mountain Dog',
-    'Estrela Mountain Dog',
-    'Eurasier',
-    'Field Spaniel',
-    'Finnish Lapphund',
-    'Finnish Spitz',
-    'Flat-Coated Retriever',
-    'French Bulldog',
-    'French Spaniel',
-    'German Longhaired Pointer',
-    'German Pinscher',
-    'German Shepherd Dog',
-    'German Shorthaired Pointer',
-    'German Spitz',
-    'German Wirehaired Pointer',
-    'Giant Schnauzer',
-    'Glen of Imaal Terrier',
-    'Golden Retriever',
-    'Gordon Setter',
-    'Grand Basset Griffon Vendéen',
-    'Great Dane',
-    'Great Pyrenees',
-    'Greater Swiss Mountain Dog',
-    'Greyhound',
-    'Hamiltonstovare',
-    'Hanoverian Scenthound',
-    'Harrier',
-    'Havanese',
-    'Hokkaido',
-    'Hovawart',
-    'Ibizan Hound',
-    'Icelandic Sheepdog',
-    'Irish Red and White Setter',
-    'Irish Setter',
-    'Irish Terrier',
-    'Irish Water Spaniel',
-    'Irish Wolfhound',
-    'Italian Greyhound',
-    'Jagdterrier',
-    'Japanese Akitainu',
-    'Japanese Chin',
-    'Japanese Spitz',
-    'Japanese Terrier',
-    'Jindo',
-    'Kai Ken',
-    'Karelian Bear Dog',
-    'Keeshond',
-    'Kerry Blue Terrier',
-    'Kishu Ken',
-    'Komondor',
-    'Kromfohrlander',
-    'Kuvasz',
-    'Labrador Retriever',
-    'Lagotto Romagnolo',
-    'Lakeland Terrier',
-    'Lancashire Heeler',
-    'Lapponian Herder',
-    'Leonberger',
-    'Lhasa Apso',
-    'Löwchen',
-    'Maltese',
-    'Manchester Terrier (Standard)',
-    'Manchester Terrier (Toy)',
-    'Mastiff',
-    'Miniature American Shepherd',
-    'Miniature Bull Terrier',
-    'Miniature Pinscher',
-    'Miniature Schnauzer',
-    'Mountain Cur',
-    'Mudi',
-    'Neapolitan Mastiff',
-    'Nederlandse Kooikerhondje',
-    'Newfoundland',
-    'Norfolk Terrier',
-    'Norrbottenspets',
-    'Norwegian Buhund',
-    'Norwegian Elkhound',
-    'Norwegian Lundehund',
-    'Norwich Terrier',
-    'Nova Scotia Duck Tolling Retriever',
-    'Old English Sheepdog',
-    'Otterhound',
-    'Papillon',
-    'Parson Russell Terrier',
-    'Pekingese',
-    'Pembroke Welsh Corgi',
-    'Perro de Presa Canario',
-    'Peruvian Inca Orchid',
-    'Petit Basset Griffon Vendéen',
-    'Pharaoh Hound',
-    'Pointer',
-    'Polish Lowland Sheepdog',
-    'Pomeranian',
-    'Poodle (Miniature)',
-    'Poodle (Standard)',
-    'Poodle (Toy)',
-    'Porcelaine',
-    'Portuguese Podengo',
-    'Portuguese Podengo Pequeno',
-    'Portuguese Pointer',
-    'Portuguese Sheepdog',
-    'Portuguese Water Dog',
-    'Pudelpointer',
-    'Pug',
-    'Puli',
-    'Pumi',
-    'Pyrenean Mastiff',
-    'Pyrenean Shepherd',
-    'Rafeiro do Alentejo',
-    'Rat Terrier',
-    'Redbone Coonhound',
-    'Rhodesian Ridgeback',
-    'Romanian Mioritic Shepherd Dog',
-    'Rottweiler',
-    'Russell Terrier',
-    'Russian Toy',
-    'Russian Tsvetnaya Bolonka',
-    'Saint Bernard',
-    'Saluki',
-    'Samoyed',
-    'Schapendoes',
-    'Schipperke',
-    'Scottish Deerhound',
-    'Scottish Terrier',
-    'Sealyham Terrier',
-    'Segugio Italiano',
-    'Shetland Sheepdog',
-    'Shiba Inu',
-    'Shih Tzu',
-    'Shikoku',
-    'Siberian Husky',
-    'Silky Terrier',
-    'Skye Terrier',
-    'Sloughi',
-    'Slovakian Wirehaired Pointer',
-    'Slovensky Cuvac',
-    'Slovensky Kopov',
-    'Small Munsterlander',
-    'Smooth Fox Terrier',
-    'Soft Coated Wheaten Terrier',
-    'Spanish Mastiff',
-    'Spanish Water Dog',
-    'Spinone Italiano',
-    'Stabyhoun',
-    'Staffordshire Bull Terrier',
-    'Standard Schnauzer',
-    'Sussex Spaniel',
-    'Swedish Lapphund',
-    'Swedish Vallhund',
-    'Taiwan Dog',
-    'Teddy Roosevelt Terrier',
-    'Thai Ridgeback',
-    'Tibetan Mastiff',
-    'Tibetan Spaniel',
-    'Tibetan Terrier',
-    'Tornjak',
-    'Tosa',
-    'Transylvanian Hound',
-    'Treeing Tennessee Brindle',
-    'Treeing Walker Coonhound',
-    'Vizsla',
-    'Volpino Italiano',
-    'Weimaraner',
-    'Welsh Springer Spaniel',
-    'Welsh Terrier',
-    'West Highland White Terrier',
-    'Whippet',
-    'Wire Fox Terrier',
-    'Wirehaired Pointing Griffon',
-    'Wirehaired Vizsla',
-    'Working Kelpie',
-    'Xoloitzcuintli',
-    'Yakutian Laika',
-    'Yorkshire Terrier',
-]
+// const dogRandom = document.querySelector('#dog')
+// const apiKey = 'QFN4g+jpk38etypKU3z46A==QapTBXHbitWz4QVV'
+// const dogBreeds =[
+//     'Affenpinscher',
+//     'Afghan Hound',
+//     'Airedale Terrier',
+//     'Akita',
+//     'Alaskan Klee Kai',
+//     'Alaskan Malamute',
+//     'American English Coonhound',
+//     'American Eskimo Dog',
+//     'American Foxhound',
+//     'American Hairless Terrier',
+//     'American Leopard Hound',
+//     'American Staffordshire Terrier',
+//     'American Water Spaniel',
+//     'Anatolian Shepherd Dog',
+//     'Appenzeller Sennenhund',
+//     'Australian Cattle Dog',
+//     'Australian Kelpie',
+//     'Australian Shepherd',
+//     'Australian Stumpy Tail Cattle Dog',
+//     'Australian Terrier',
+//     'Azawakh',
+//     'Barbado da Terceira',
+//     'Barbet',
+//     'Basenji',
+//     'Basset Fauve de Bretagne',
+//     'Basset Hound',
+//     'Bavarian Mountain Scent Hound',
+//     'Beagle',
+//     'Bearded Collie',
+//     'Beauceron',
+//     'Bedlington Terrier',
+//     'Belgian Laekenois',
+//     'Belgian Malinois',
+//     'Belgian Sheepdog',
+//     'Belgian Tervuren',
+//     'Bergamasco Sheepdog',
+//     'Berger Picard',
+//     'Bernese Mountain Dog',
+//     'Bichon Frise',
+//     'Biewer Terrier',
+//     'Black and Tan Coonhound',
+//     'Black Russian Terrier',
+//     'Bloodhound',
+//     'Bluetick Coonhound',
+//     'Boerboel',
+//     'Bohemian Shepherd',
+//     'Bolognese',
+//     'Border Collie',
+//     'Border Terrier',
+//     'Borzoi',
+//     'Boston Terrier',
+//     'Bouvier des Flandres',
+//     'Boxer',
+//     'Boykin Spaniel',
+//     'Bracco Italiano',
+//     'Braque du Bourbonnais',
+//     'Braque Francais Pyrenean',
+//     'Briard',
+//     'Brittany',
+//     'Broholmer',
+//     'Brussels Griffon',
+//     'Bulldog',
+//     'Bull Terrier',
+//     'Bullmastiff',
+//     'Cairn Terrier',
+//     'Canaan Dog',
+//     'Cane Corso',
+//     'Cardigan Welsh Corgi',
+//     'Carolina Dog',
+//     'Catahoula Leopard Dog',
+//     'Caucasian Shepherd Dog',
+//     'Cavalier King Charles Spaniel',
+//     'Central Asian Shepherd Dog',
+//     'Cesky Terrier',
+//     'Chesapeake Bay Retriever',
+//     'Chihuahua',
+//     'Chinese Crested',
+//     'Chinese Shar-Pei',
+//     'Chinook',
+//     'Chow Chow',
+//     "Cirneco dell'Etna",
+//     'Clumber Spaniel',
+//     'Cocker Spaniel',
+//     'Collie',
+//     'Coton de Tulear',
+//     'Croatian Sheepdog',
+//     'Curly-Coated Retriever',
+//     'Czechoslovakian Vlcak',
+//     'Dachshund',
+//     'Dalmatian',
+//     'Dandie Dinmont Terrier',
+//     'Danish-Swedish Farmdog',
+//     'Deutscher Wachtelhund',
+//     'Doberman Pinscher',
+//     'Dogo Argentino',
+//     'Dogue de Bordeaux',
+//     'Drentsche Patrijshond',
+//     'Drever',
+//     'Dutch Shepherd',
+//     'English Cocker Spaniel',
+//     'English Foxhound',
+//     'English Setter',
+//     'English Springer Spaniel',
+//     'English Toy Spaniel',
+//     'Entlebucher Mountain Dog',
+//     'Estrela Mountain Dog',
+//     'Eurasier',
+//     'Field Spaniel',
+//     'Finnish Lapphund',
+//     'Finnish Spitz',
+//     'Flat-Coated Retriever',
+//     'French Bulldog',
+//     'French Spaniel',
+//     'German Longhaired Pointer',
+//     'German Pinscher',
+//     'German Shepherd Dog',
+//     'German Shorthaired Pointer',
+//     'German Spitz',
+//     'German Wirehaired Pointer',
+//     'Giant Schnauzer',
+//     'Glen of Imaal Terrier',
+//     'Golden Retriever',
+//     'Gordon Setter',
+//     'Grand Basset Griffon Vendéen',
+//     'Great Dane',
+//     'Great Pyrenees',
+//     'Greater Swiss Mountain Dog',
+//     'Greyhound',
+//     'Hamiltonstovare',
+//     'Hanoverian Scenthound',
+//     'Harrier',
+//     'Havanese',
+//     'Hokkaido',
+//     'Hovawart',
+//     'Ibizan Hound',
+//     'Icelandic Sheepdog',
+//     'Irish Red and White Setter',
+//     'Irish Setter',
+//     'Irish Terrier',
+//     'Irish Water Spaniel',
+//     'Irish Wolfhound',
+//     'Italian Greyhound',
+//     'Jagdterrier',
+//     'Japanese Akitainu',
+//     'Japanese Chin',
+//     'Japanese Spitz',
+//     'Japanese Terrier',
+//     'Jindo',
+//     'Kai Ken',
+//     'Karelian Bear Dog',
+//     'Keeshond',
+//     'Kerry Blue Terrier',
+//     'Kishu Ken',
+//     'Komondor',
+//     'Kromfohrlander',
+//     'Kuvasz',
+//     'Labrador Retriever',
+//     'Lagotto Romagnolo',
+//     'Lakeland Terrier',
+//     'Lancashire Heeler',
+//     'Lapponian Herder',
+//     'Leonberger',
+//     'Lhasa Apso',
+//     'Löwchen',
+//     'Maltese',
+//     'Manchester Terrier (Standard)',
+//     'Manchester Terrier (Toy)',
+//     'Mastiff',
+//     'Miniature American Shepherd',
+//     'Miniature Bull Terrier',
+//     'Miniature Pinscher',
+//     'Miniature Schnauzer',
+//     'Mountain Cur',
+//     'Mudi',
+//     'Neapolitan Mastiff',
+//     'Nederlandse Kooikerhondje',
+//     'Newfoundland',
+//     'Norfolk Terrier',
+//     'Norrbottenspets',
+//     'Norwegian Buhund',
+//     'Norwegian Elkhound',
+//     'Norwegian Lundehund',
+//     'Norwich Terrier',
+//     'Nova Scotia Duck Tolling Retriever',
+//     'Old English Sheepdog',
+//     'Otterhound',
+//     'Papillon',
+//     'Parson Russell Terrier',
+//     'Pekingese',
+//     'Pembroke Welsh Corgi',
+//     'Perro de Presa Canario',
+//     'Peruvian Inca Orchid',
+//     'Petit Basset Griffon Vendéen',
+//     'Pharaoh Hound',
+//     'Pointer',
+//     'Polish Lowland Sheepdog',
+//     'Pomeranian',
+//     'Poodle (Miniature)',
+//     'Poodle (Standard)',
+//     'Poodle (Toy)',
+//     'Porcelaine',
+//     'Portuguese Podengo',
+//     'Portuguese Podengo Pequeno',
+//     'Portuguese Pointer',
+//     'Portuguese Sheepdog',
+//     'Portuguese Water Dog',
+//     'Pudelpointer',
+//     'Pug',
+//     'Puli',
+//     'Pumi',
+//     'Pyrenean Mastiff',
+//     'Pyrenean Shepherd',
+//     'Rafeiro do Alentejo',
+//     'Rat Terrier',
+//     'Redbone Coonhound',
+//     'Rhodesian Ridgeback',
+//     'Romanian Mioritic Shepherd Dog',
+//     'Rottweiler',
+//     'Russell Terrier',
+//     'Russian Toy',
+//     'Russian Tsvetnaya Bolonka',
+//     'Saint Bernard',
+//     'Saluki',
+//     'Samoyed',
+//     'Schapendoes',
+//     'Schipperke',
+//     'Scottish Deerhound',
+//     'Scottish Terrier',
+//     'Sealyham Terrier',
+//     'Segugio Italiano',
+//     'Shetland Sheepdog',
+//     'Shiba Inu',
+//     'Shih Tzu',
+//     'Shikoku',
+//     'Siberian Husky',
+//     'Silky Terrier',
+//     'Skye Terrier',
+//     'Sloughi',
+//     'Slovakian Wirehaired Pointer',
+//     'Slovensky Cuvac',
+//     'Slovensky Kopov',
+//     'Small Munsterlander',
+//     'Smooth Fox Terrier',
+//     'Soft Coated Wheaten Terrier',
+//     'Spanish Mastiff',
+//     'Spanish Water Dog',
+//     'Spinone Italiano',
+//     'Stabyhoun',
+//     'Staffordshire Bull Terrier',
+//     'Standard Schnauzer',
+//     'Sussex Spaniel',
+//     'Swedish Lapphund',
+//     'Swedish Vallhund',
+//     'Taiwan Dog',
+//     'Teddy Roosevelt Terrier',
+//     'Thai Ridgeback',
+//     'Tibetan Mastiff',
+//     'Tibetan Spaniel',
+//     'Tibetan Terrier',
+//     'Tornjak',
+//     'Tosa',
+//     'Transylvanian Hound',
+//     'Treeing Tennessee Brindle',
+//     'Treeing Walker Coonhound',
+//     'Vizsla',
+//     'Volpino Italiano',
+//     'Weimaraner',
+//     'Welsh Springer Spaniel',
+//     'Welsh Terrier',
+//     'West Highland White Terrier',
+//     'Whippet',
+//     'Wire Fox Terrier',
+//     'Wirehaired Pointing Griffon',
+//     'Wirehaired Vizsla',
+//     'Working Kelpie',
+//     'Xoloitzcuintli',
+//     'Yakutian Laika',
+//     'Yorkshire Terrier',
+// ]
 
-function randomDogId(min,max){
+// function randomDogId(min,max){
+//     min = Math.ceil(min);
+//     max = Math.floor(max);
+//     let result = Math.floor(Math.random() * (max - min + 1)) + min;
+//     return result;
+// }
+// let dog = dogBreeds[randomDogId(0,dogBreeds.length)];
+// fetch(`https://api.api-ninjas.com/v1/dogs?name=${dog}`,{
+//     headers: {'X-Api-Key': `${apiKey}`,
+// })
+//     .then(response => response.json())
+//     .then(data=>randomDog(data))
+
+    
+// function randomDog(data) {
+//     let dogImage = document.querySelector('#dog-image');
+//     dogImage.setAttribute('src', `${data[0].image_link}`)
+//     let dogName = document.querySelector('#dog-name');
+//     dogName.innerHTML = data[0].name; 
+//     let dogLifetime = document.querySelector('#life-expectancy');
+//     dogLifetime.innerHTML = `${data[0].min_life_expectancy} lat  - ${data[0].max_life_expectancy} lat`
+//     let maleHeight = document.querySelector('#male-height');
+//     maleHeight.innerHTML = `${((data[0].min_height_male)*2.54).toFixed(0)}cm - ${((data[0].max_height_male)*2.54).toFixed(0)}cm`
+//     let femaleHeight = document.querySelector('#female-height');
+//     femaleHeight.innerHTML = `${((data[0].min_height_female)*2.54).toFixed(0)}cm - ${((data[0].max_height_female)*2.54).toFixed(0)}cm`
+//     let maleWeight = document.querySelector('#male-weight');
+//     maleWeight.innerHTML = `${((data[0].min_weight_male)*0.453592).toFixed(1)}kg - ${((data[0].max_weight_male)*0.453592).toFixed(1)}kg`
+//     let femaleWeight = document.querySelector('#female-weight');
+//     femaleWeight.innerHTML = `${((data[0].min_weight_female)*0.453592).toFixed(1)}kg - ${((data[0].max_weight_female)*0.453592).toFixed(1)}kg`
+
+//     let energyRate = document.querySelector('#energy-rate');
+//     let energy = data[0].energy;
+//     for(let i = 0; i < energy; i++){
+//         showPaw(energyRate)
+//     }
+//     let barkingRate = document.querySelector('#barking-rate');
+//     let barking = data[0].barking;
+//     for(let i = 0; i < barking; i++){
+//         showPaw(barkingRate)
+//     }
+//     let trainabilityRate = document.querySelector('#trainability-rate');
+//     let trainability = data[0].barking;
+//     for(let i = 0; i < trainability; i++){
+//         showPaw(trainabilityRate)
+//     }
+//     let childrenRate = document.querySelector('#children-rate');
+//     let children = data[0].good_with_children;
+//     for(let i = 0; i < children; i++){
+//         showPaw(childrenRate)
+//     }
+//     let otherRate = document.querySelector('#other-rate');
+//     let other = data[0].good_with_other_dogs;
+//     for(let i = 0; i < other; i++){
+//         showPaw(otherRate)
+//     }
+//     let strangersRate = document.querySelector('#strangers-rate');
+//     let strangers = data[0].good_with_strangers;
+//     for(let i = 0; i < strangers; i++){
+//         showPaw(strangersRate)
+//     }
+
+//     const dogButton = document.querySelector('#other-dog');
+//         dogButton.addEventListener('click', ()=>{
+//             let dog = dogBreeds[randomDogId(0,dogBreeds.length)];
+//             fetch(`https://api.api-ninjas.com/v1/dogs?name=${dog}`,{
+//                 method : 'GET',
+//                 mode: 'cors',
+//                 headers: { 'X-Api-Key': `${apiKey}`}
+//             })
+//             .then(response => response.json())
+//             .then(data=>newDog(data))
+//             preloader(dogRandom);
+//             dogRandom.innerHTML =`
+//                 <div class="result">
+//                     <div class="dog-info">
+//                         <img src=" " alt="dog" id="dog-image">
+//                         <p id="dog-name"></p>
+//                         <p id="life-expectancy"></p>
+//                         <table>
+//                             <th>
+//                                 <td>Samiec</td>
+//                                 <td>Samica</td>
+//                             </th>
+//                             <tr>
+//                                 <td><strong>Wysokość</strong></td>
+//                                 <td id="male-height"></td>
+//                                 <td id="female-height"></td>
+//                             </tr>
+//                             <tr>
+//                                 <td><strong>Waga</strong></td>
+//                                 <td id="male-weight"></td> 
+//                                 <td id="female-weight"></td> 
+//                             </tr>
+//                         </table>
+//                     </div>
+//                     <div class="dog-ratings">
+//                         <ul class="ratings">
+//                             <li id="energy-rate">
+//                                 <strong>Energia: </strong> 
+//                             </li>
+//                             <li id="barking-rate">
+//                                 <strong>Szczekliwość: </strong> 
+                                
+//                             </li>
+//                             <li id="trainability-rate">
+//                                 <strong>Łatwość tresury: </strong> 
+
+//                             </li>
+//                             <li id="children-rate">
+//                                 <strong>Stosunek do dzieci: </strong> 
+//                             </li>
+//                             <li id="other-rate">
+//                                 <strong>Stosunek do innych psów: </strong> 
+//                             </li>
+//                             <li id="strangers-rate">
+//                                 <strong>Stosunek do obcych: </strong> 
+//                             </li>
+//                         </ul>
+//                     </div>
+//                     <button id="other-dog">Losuj nowego psa</button>
+//                 </div>
+//     `
+//         })
+
+// }   
+// function showPaw(rate){
+//     let paw = document.createElement('i');
+//     paw.classList.add('fa-solid');
+//     paw.classList.add('fa-paw');
+//     rate.appendChild(paw)
+// }
+// function newDog(data){
+//     randomDog(data);
+// }
+
+//============================================================= 
+//=============================================================
+                    // quote randomizer
+//============================================================= 
+//============================================================= 
+const quoteRandom = document.querySelector('#quote')
+function randomQuoteId(min,max){
     min = Math.ceil(min);
     max = Math.floor(max);
     let result = Math.floor(Math.random() * (max - min + 1)) + min;
     return result;
 }
-let dog = dogBreeds[randomDogId(0,dogBreeds.length)];
-fetch(`https://api.api-ninjas.com/v1/dogs?name=${dog}`,{
-    headers: { 'X-Api-Key': `${apiKey}`}
-})
-    .then(response => response.json())
-    .then(data=>randomDog(data))
+fetch('quote.json')
+.then(response => response.json())
+.then(data =>randomQuote(data))
 
-    
-function randomDog(data) {
-    let dogImage = document.querySelector('#dog-image');
-    dogImage.setAttribute('src', `${data[0].image_link}`)
-    let dogName = document.querySelector('#dog-name');
-    dogName.innerHTML = data[0].name; 
-    let dogLifetime = document.querySelector('#life-expectancy');
-    dogLifetime.innerHTML = `${data[0].min_life_expectancy} lat  - ${data[0].max_life_expectancy} lat`
-    let maleHeight = document.querySelector('#male-height');
-    maleHeight.innerHTML = `${((data[0].min_height_male)*2.54).toFixed(0)}cm - ${((data[0].max_height_male)*2.54).toFixed(0)}cm`
-    let femaleHeight = document.querySelector('#female-height');
-    femaleHeight.innerHTML = `${((data[0].min_height_female)*2.54).toFixed(0)}cm - ${((data[0].max_height_female)*2.54).toFixed(0)}cm`
-    let maleWeight = document.querySelector('#male-weight');
-    maleWeight.innerHTML = `${((data[0].min_weight_male)*0.453592).toFixed(1)}kg - ${((data[0].max_weight_male)*0.453592).toFixed(1)}kg`
-    let femaleWeight = document.querySelector('#female-weight');
-    femaleWeight.innerHTML = `${((data[0].min_weight_female)*0.453592).toFixed(1)}kg - ${((data[0].max_weight_female)*0.453592).toFixed(1)}kg`
+function randomQuote(data){
+    let quoteButton = document.querySelector('#quote-button')
+    let quoteStart = document.querySelector('#quote .text')
+    let quoteResult = document.querySelector('#quote .result')   
+    let quoteNext = document.querySelector('#new-quote')
 
-    let energyRate = document.querySelector('#energy-rate');
-    let energy = data[0].energy;
-    for(let i = 0; i < energy; i++){
-        showPaw(energyRate)
-    }
-    let barkingRate = document.querySelector('#barking-rate');
-    let barking = data[0].barking;
-    for(let i = 0; i < barking; i++){
-        showPaw(barkingRate)
-    }
-    let trainabilityRate = document.querySelector('#trainability-rate');
-    let trainability = data[0].barking;
-    for(let i = 0; i < trainability; i++){
-        showPaw(trainabilityRate)
-    }
-    let childrenRate = document.querySelector('#children-rate');
-    let children = data[0].good_with_children;
-    for(let i = 0; i < children; i++){
-        showPaw(childrenRate)
-    }
-    let otherRate = document.querySelector('#other-rate');
-    let other = data[0].good_with_other_dogs;
-    for(let i = 0; i < other; i++){
-        showPaw(otherRate)
-    }
-    let strangersRate = document.querySelector('#strangers-rate');
-    let strangers = data[0].good_with_strangers;
-    for(let i = 0; i < strangers; i++){
-        showPaw(strangersRate)
-    }
-
-    const dogButton = document.querySelector('#other-dog');
-        dogButton.addEventListener('click', ()=>{
-            let dog = dogBreeds[randomDogId(0,dogBreeds.length)];
-            fetch(`https://api.api-ninjas.com/v1/dogs?name=${dog}`,{
-                headers: { 'X-Api-Key': `${apiKey}`}
-            })
-            .then(response => response.json())
-            .then(data=>newDog(data))
-            preloader(dogRandom);
-            dogRandom.innerHTML =`
-                <div class="result">
-                    <div class="dog-info">
-                        <img src=" " alt="dog" id="dog-image">
-                        <p id="dog-name">mops</p>
-                        <p id="life-expectancy">min_life_expectancy - max_life_expectancy</p>
-                        <table>
-                            <th>
-                                <td>Samiec</td>
-                                <td>Samica</td>
-                            </th>
-                            <tr>
-                                <td><strong>Wysokość</strong></td>
-                                <td id="male-height">min_height_male - max_height_male</td> <!-- w inch (zamienic przed wpisaniem)-->
-                                <td id="female-height">min_height_female - max_height_female</td> <!-- w inch (zamienic przed wpisaniem)-->
-                            </tr>
-                            <tr>
-                                <td><strong>Waga</strong></td>
-                                <td id="male-weight">min_weight_male - max_weight_male</td> <!-- w pounds (zamienic przed wpisaniem)-->
-                                <td id="female-weight">min_weight_female - max_weight_female</td> <!-- w pounds (zamienic przed wpisaniem)-->
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="dog-ratings">
-                        <ul class="ratings">
-                            <li id="energy-rate">
-                                <strong>Energia: </strong> 
-                            </li>
-                            <li id="barking-rate">
-                                <strong>Szczekliwość: </strong> 
-                                
-                            </li>
-                            <li id="trainability-rate">
-                                <strong>Łatwość tresury: </strong> 
-
-                            </li>
-                            <li id="children-rate">
-                                <strong>Stosunek do dzieci: </strong> 
-                            </li>
-                            <li id="other-rate">
-                                <strong>Stosunek do innych psów: </strong> 
-                            </li>
-                            <li id="strangers-rate">
-                                <strong>Stosunek do obcych: </strong> 
-                            </li>
-                        </ul>
-                    </div>
-                    <button id="other-dog">Losuj nowego psa</button>
-                </div>
-    `
+    quoteButton.addEventListener('click',()=>{
+        let quoteID = randomQuoteId(0,14);
+        let quote = document.querySelector('#quote blockquote');
+        let author = document.querySelector('#quote span');
+        preloader(quoteRandom)
+        quoteStart.style.display = 'none';
+        quoteResult.style.display = 'flex';
+        quote.innerHTML = data[quoteID].quote;
+        quote.cite = data[quoteID].author;
+        author.innerHTML = data[quoteID].author;
+        quoteNext.addEventListener('click',()=>{
+            preloader(quoteRandom)
+            let newQuoteID = randomQuoteId(0,14);
+            quote.innerHTML = data[newQuoteID].quote;
+            quote.cite = data[newQuoteID].author;
+            author.innerHTML = data[newQuoteID].author;
         })
-
-}   
-function showPaw(rate){
-    let paw = document.createElement('i');
-    paw.classList.add('fa-solid');
-    paw.classList.add('fa-paw');
-    rate.appendChild(paw)
+    })
 }
-function newDog(data){
-    randomDog(data);
+function newQuote(data) { 
+    console.log(data)
 }
 // section displayers
 mainPageButton.addEventListener('click',()=>{
@@ -1366,14 +1414,15 @@ colorType.addEventListener('click',()=>{
     colorRandom.style.display='flex';
     randomColor();
 })
-dogType.addEventListener('click',()=>{
-    displayNone();
-    dogRandom.style.display='block';
-    randomDog();
-})
+// dogType.addEventListener('click',()=>{
+//     displayNone();
+//     dogRandom.style.display='block';
+//     randomDog();
+// })
 quoteType.addEventListener('click',()=>{
     displayNone();
     quoteRandom.style.display='flex';
+    randomQuote();
 })
 
 coinType.addEventListener('click',()=>{
