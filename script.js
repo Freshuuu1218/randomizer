@@ -1410,6 +1410,154 @@ function coinFlip(){
     })
 }
 
+//============================================================= 
+//=============================================================
+                    // dice randomizer
+//============================================================= 
+//============================================================= 
+const diceRandom = document.querySelector('#dice')
+function rollDice(){
+    let dicesValue = 0;
+    let roll = document.querySelector('#dice-button')
+    roll.addEventListener('click', ()=>{
+        let cup = document.querySelector('.cup')
+        cup.classList.add('animation-cup')
+        let id = 0;
+        let result = document.querySelector('#dice-result');
+        // create dices with dots
+        let howMany = document.querySelector('#dices-count').value;
+        let container = document.querySelector('#dices-container .dices')
+        container.classList.add('animation-dices')
+        container.innerHTML = '';
+        for(let i=0; i<howMany; i++){
+            let dice = document.createElement('div');
+            dice.classList.add('dice');
+            let dot1 = document.createElement('span');
+            let dot2 = document.createElement('span');
+            let dot3 = document.createElement('span');
+            let dot4 = document.createElement('span');
+            let dot5 = document.createElement('span');
+            let dot6 = document.createElement('span');
+            dot1.classList.add('dot');
+            dot1.classList.add('dot1');
+            dot2.classList.add('dot');
+            dot2.classList.add('dot2');
+            dot3.classList.add('dot');
+            dot3.classList.add('dot3');
+            dot4.classList.add('dot');
+            dot4.classList.add('dot4');
+            dot5.classList.add('dot');
+            dot5.classList.add('dot5');
+            dot6.classList.add('dot');
+            dot6.classList.add('dot6');
+            dice.appendChild(dot1);
+            dice.appendChild(dot2);
+            dice.appendChild(dot3);
+            dice.appendChild(dot4);
+            dice.appendChild(dot5);
+            dice.appendChild(dot6);
+            // change dots position
+            setTimeout(()=>{
+                let value = randomDots(1,6);
+                
+                dicesValue += value;
+
+                if(id < howMany){
+                    id++;
+                }
+                if(id == howMany){
+                    result.innerHTML = dicesValue;
+                }
+        
+ 
+                switch(value){
+                    case 1: 
+                        dot1.style.setProperty('top','50%');
+                        dot1.style.setProperty('left','50%');
+                        dot2.style.display='none';
+                        dot3.style.display='none';
+                        dot4.style.display='none';
+                        dot5.style.display='none';
+                        dot6.style.display='none';
+                break;
+                    case 2: 
+                        dot1.style.setProperty('top','70%');
+                        dot1.style.setProperty('left','33%');
+                        dot2.style.setProperty('top','30%');
+                        dot2.style.setProperty('left','66%');
+                        dot3.style.display='none';
+                        dot4.style.display='none';
+                        dot5.style.display='none';
+                        dot6.style.display='none';
+                break;
+                    case 3: 
+                        dot1.style.setProperty('top','75%');
+                        dot1.style.setProperty('left','25%');
+                        dot2.style.setProperty('top','50%');
+                        dot2.style.setProperty('left','50%');
+                        dot3.style.setProperty('top','25%');
+                        dot3.style.setProperty('left','75%');
+                        dot4.style.display='none';
+                        dot5.style.display='none';
+                        dot6.style.display='none';
+                break;
+                    case 4: 
+                        dot1.style.setProperty('top','25%');
+                        dot1.style.setProperty('left','25%');
+                        dot2.style.setProperty('top','25%');
+                        dot2.style.setProperty('left','75%');
+                        dot3.style.setProperty('top','75%');
+                        dot3.style.setProperty('left','25%');
+                        dot4.style.setProperty('top','75%');
+                        dot4.style.setProperty('left','75%');
+                        dot5.style.display='none';
+                        dot6.style.display='none';
+                break;
+                    case 5:
+                        dot1.style.setProperty('top','25%');
+                        dot1.style.setProperty('left','25%');
+                        dot2.style.setProperty('top','25%');
+                        dot2.style.setProperty('left','75%');
+                        dot3.style.setProperty('top','75%');
+                        dot3.style.setProperty('left','25%');
+                        dot4.style.setProperty('top','75%');
+                        dot4.style.setProperty('left','75%');
+                        dot5.style.setProperty('top','50%');
+                        dot5.style.setProperty('left','50%');
+                        dot6.style.display='none';
+                break;
+                    case 6: 
+                        dot1.style.setProperty('top','25%');
+                        dot1.style.setProperty('left','25%');
+                        dot2.style.setProperty('top','25%');
+                        dot2.style.setProperty('left','75%');
+                        dot3.style.setProperty('top','50%');
+                        dot3.style.setProperty('left','25%');
+                        dot4.style.setProperty('top','50%');
+                        dot4.style.setProperty('left','75%');
+                        dot5.style.setProperty('top','75%');
+                        dot5.style.setProperty('left','25%');
+                        dot6.style.setProperty('top','75%');
+                        dot6.style.setProperty('left','75%');
+                break;
+                }
+            },2000)
+            container.appendChild(dice);
+            setTimeout(()=>{
+                result.style.display = 'block';
+                cup.classList.remove('animation-cup')
+                container.classList.remove('animation-dices')
+            },12000)
+
+        }
+    })
+}
+function randomDots(min,max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    let result = Math.floor(Math.random() * (max - min + 1)) + min;
+    return result;
+}
 // section displayers
 mainPageButton.addEventListener('click',()=>{
     displayNone();
@@ -1464,4 +1612,5 @@ coinType.addEventListener('click',()=>{
 diceType.addEventListener('click',()=>{
     displayNone();
     diceRandom.style.display='flex';
+    rollDice();
 })

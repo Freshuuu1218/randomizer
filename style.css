@@ -732,7 +732,6 @@ section{
     flex-direction: column;
     align-items: center;
 }
-
 #coin button {
     padding: 1rem;
     background-color: blue;
@@ -740,7 +739,6 @@ section{
     border-radius: 20px;
     color: white;
 }
-
 #coin-random {
     position: relative;
     width: 15rem;
@@ -748,7 +746,6 @@ section{
     margin: 2rem 0rem;
     transform-style: preserve-3d;
 }
-
 #coin-random div {
     width: 100%;
     height: 100%;
@@ -757,45 +754,208 @@ section{
     background-size: contain;
     position: absolute;
 }
-
 #heads {
     background-image: url('./images/heads.png');
     transition: all 3s;
 }
-
 .animate-heads {
     animation: flipHeads 3s;
     animation-fill-mode: forwards;
 }
-
 @keyframes flipHeads {
     from {
         transform: rotateY(0deg);
     }
-
     to {
         transform: rotateY(1800deg);
     }
 }
-
 #tails {
     background-image: url('./images/tails.png');
     transform: rotateY(-180deg);
     transition: rotateY 3s;
 }
-
 .animate-tails {
     animation: flipTails 3s;
     animation-fill-mode: forwards;
 }
-
-
 @keyframes flipTails {
     from {
         transform: rotateY(0deg);
     }
-
     to {
         transform: rotateY(1620deg);
     }
+}
+#dice{
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+#dice .inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#dice .inputs input{
+    appearance: none;
+    -moz-appearance:textfield;
+    width: 2em;
+    font-size: 2em;
+    height: 2em;
+    padding-left: .635em;
+    border-radius: 50%;
+    margin:  1em 0;
+}
+/* remove arrows from input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+}
+#dice .inputs button{
+    background-color: aqua;
+    font-size: 1.2em;
+    padding: .5em 1.5em;
+    border: 0;
+    border-radius: 2em ;
+}
+#dices-container{
+    height: 40%;
+    position: relative;
+    width: 30%;
+}
+#dices-container .cup{
+    height: 300px;
+    width: 200px;
+    position: absolute;
+    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 20% 100%);
+    background-color: #54321a;
+    transform: translateX(1000%);
+}
+.animation-cup{
+    animation: appear 12s ease-in-out;
+}
+@keyframes appear{
+0%{
+    transform: translate(1000%);
+}
+25%{
+    transform: translate(300%);
+}
+30%{
+    transform: translate(300%,30px);
+}
+31%{
+    transform: translate(300%,-30px);
+}
+32%{
+    transform: translate(300%,30px);
+}
+33%{
+    transform: translate(300%,-30px);
+}
+34%{
+    transform: translate(300%,30px);
+}
+35%{
+    transform: translate(300%,-30px);
+}
+36%{
+    transform: translate(300%,30px);
+}
+37%{
+    transform: translate(300%,0px);
+}
+40%{
+    transform: translate(300%, 0px) rotate(0deg);
+}
+45%{
+    transform: translate(300%, 0px) rotate(-95deg);
+}
+75%{
+    transform: translate(300%);
+}
+100%{
+    transform: translate(1000%);
+}
+}
+
+#dices-container .dices{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 2em;
+    padding: 2.25em;
+}
+.animation-dices{
+    animation: roll 12s linear;
+}
+@keyframes roll{
+    0%{
+        opacity: 1
+    }
+    15%{
+        opacity: .5;
+        transform: translate(300%) scale(.5);
+    }
+    25%{
+        opacity: 0;
+        transform: translate(300%) scale(0);
+    }
+    45%{
+        opacity: 0;
+        transform: scale(1) translate(0);
+    }
+    70%{
+        opacity: 1;
+        transform: scale(1) translate(0);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1) translate(0);
+    }
+}
+#dices-container .dice{
+    position: relative;
+    width: 125px;
+    height: 125px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7),
+    inset 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: auto auto;
+}
+#dices-container .dice .dot{
+    position: absolute;
+    background-color: red;
+    box-shadow: inset 0 0 8px rgba(0,0,0,.8);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.dot1{
+    top: 25%;
+    left: 25%;
+}
+.dot2{
+    top: 50%;
+    left: 25%;
+}
+.dot3{
+    top: 75%;
+    left: 25%;
+}
+.dot4{
+    top: 25%;
+    left: 75%;
+}
+.dot5{
+    top: 50%;
+    left: 75%;
+}
+.dot6{
+    top: 75%;
+    left: 75%;
 }
