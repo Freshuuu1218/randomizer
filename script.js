@@ -1,6 +1,4 @@
 const allSections = document.querySelectorAll('section');
-const mainPageButton = document.querySelector('header nav ul li:first-child');
-const contactButton = document.querySelector('header nav ul li:last-child');
 const mainPage = document.querySelector('#main-page');
 const startButton = document.querySelector('#start');
 const root = document.querySelector(':root')
@@ -13,7 +11,12 @@ const quoteType = document.querySelector('#quote-type');
 const numberType = document.querySelector('#number-type');
 const coinType = document.querySelector('#coin-type');
 const diceType = document.querySelector('#dice-type');
+// navigation buttons
+const mainPageButton = document.querySelector('#mainPageNav');
+const howToUse = document.querySelector('#howToUse');
+const contactButton = document.querySelector('#contact');
 
+// randomization sections start
 const listRandom = document.querySelector('#standard');
 // display none for all sections
 function displayNone(){
@@ -332,7 +335,6 @@ function randomCircle(){
 function createCircle(number, array, circleType){
     
     let circle = document.querySelector('.circle');
-// object with polygon shapes of each element depending on how many elements are there
 
 //random degree of spin
     let degreeBase = 3600;
