@@ -1397,16 +1397,21 @@ function coinFlip(){
     setTimeout(()=>{
         if(Math.random()< .5){
         coin.classList.add('animate-heads')
-        resultElement.innerHTML = 'HEADS'
+        setTimeout(()=>{
+            resultElement.innerHTML = 'ORZEŁ'
+        },3000)
         coin.classList.remove('animate-tails')   
     }else{
         coin.classList.add('animate-tails')
-        resultElement.innerHTML = 'TAILS'
+        setTimeout(()=>{
+            resultElement.innerHTML = 'RESZKA'
+        },3000)
         coin.classList.remove('animate-heads')
     }
     },0)
     flip.addEventListener('click', ()=>{
         coinFlip();
+        resultElement.innerHTML= ''
         coin.classList.remove('animate-heads')
         coin.classList.remove('animate-tails')
     })
@@ -1561,6 +1566,14 @@ function randomDots(min,max){
     return result;
 }
 // section displayers
+const listAside = document.querySelector('#aside-navigation li:first-child');
+const circleAside = document.querySelector('#aside-navigation li:nth-child(2)');
+const numberAside = document.querySelector('#aside-navigation li:nth-child(3)');
+const colorAside = document.querySelector('#aside-navigation li:nth-child(4)');
+// const dogAside = document.querySelector('#aside-navigation li:nth-child(5)');
+const quoteAside = document.querySelector('#aside-navigation li:nth-child(6)');
+const coinAside = document.querySelector('#aside-navigation li:nth-child(7)');
+const diceAside = document.querySelector('#aside-navigation li:last-child');
 mainPageButton.addEventListener('click',()=>{
     displayNone();
     mainPage.style.display = 'flex';
@@ -1574,23 +1587,38 @@ listType.addEventListener('click',()=>{
     listRandom.style.display='flex';
     randomList();
 })
+listAside.addEventListener('click',()=>{
+    displayNone();
+    listRandom.style.display='flex';
+    randomList();
+})
 circleType.addEventListener('click',()=>{
     displayNone();
     let circleRandom = document.querySelector('#circle');
     circleRandom.style.display='flex';
     randomCircle()
 })
+circleAside.addEventListener('click',()=>{
+    displayNone();
+    let circleRandom = document.querySelector('#circle');
+    circleRandom.style.display='flex';
+    randomCircle()
+})
 numberType.addEventListener('click',()=>{
-    let checkbox = document.querySelector('#numberSwitch');
     displayNone();
     numberRandom.style.display='flex';
-    // if(checkbox.checked){
-    //     randomRealNumber();
-    // }else{
-    //     randomInteger();
-    // }
+})
+numberAside.addEventListener('click',()=>{
+    displayNone();
+    numberRandom.style.display='flex';
+
 })
 colorType.addEventListener('click',()=>{
+    displayNone();
+    colorRandom.style.display='flex';
+    randomColor();
+})
+colorAside.addEventListener('click',()=>{
     displayNone();
     colorRandom.style.display='flex';
     randomColor();
@@ -1600,18 +1628,37 @@ colorType.addEventListener('click',()=>{
 //     dogRandom.style.display='block';
 //     randomDog();
 // })
+// dogAside.addEventListener('click',()=>{
+//     displayNone();
+//     dogRandom.style.display='block';
+//     randomDog();
+// })
 quoteType.addEventListener('click',()=>{
     displayNone();
     quoteRandom.style.display='flex';
     randomQuote();
 })
-
+quoteAside.addEventListener('click',()=>{
+    displayNone();
+    quoteRandom.style.display='flex';
+    randomQuote();
+})
 coinType.addEventListener('click',()=>{
     displayNone();
     coinRandom.style.display='flex';
     coinFlip();
 })
+coinAside.addEventListener('click',()=>{
+    displayNone();
+    coinRandom.style.display='flex';
+    coinFlip();
+})
 diceType.addEventListener('click',()=>{
+    displayNone();
+    diceRandom.style.display='flex';
+    rollDice();
+})
+diceAside.addEventListener('click',()=>{
     displayNone();
     diceRandom.style.display='flex';
     rollDice();
