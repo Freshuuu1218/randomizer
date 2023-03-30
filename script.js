@@ -1376,7 +1376,7 @@ function randomQuote(data){
     let quoteNext = document.querySelector('#new-quote')
 
     quoteButton.addEventListener('click',()=>{
-        let quoteID = randomQuoteId(0,14);
+        let quoteID = randomQuoteId(0,36);
         let quote = document.querySelector('#quote blockquote');
         let author = document.querySelector('#quote span');
         preloader(quoteRandom)
@@ -1387,7 +1387,7 @@ function randomQuote(data){
         author.innerHTML = data[quoteID].author;
         quoteNext.addEventListener('click',()=>{
             preloader(quoteRandom)
-            let newQuoteID = randomQuoteId(0,14);
+            let newQuoteID = randomQuoteId(0,36);
             quote.innerHTML = data[newQuoteID].quote;
             quote.cite = data[newQuoteID].author;
             author.innerHTML = data[newQuoteID].author;
