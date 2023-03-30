@@ -132,7 +132,12 @@ function randomCircle(){
         added.innerHTML = value;
         addedContainer.appendChild(added);
         input.value ='';
+        if(document.querySelectorAll('#circle .added .item').length == 10){
+            input.disabled = true;
+            document.querySelector('#circle .input-button').disabled = true;
+        }
     })    
+    
     let circleType = {
         "0":{
             "element1":{
@@ -759,7 +764,7 @@ function circleBack(){
     circleBack.addEventListener('click',()=>{
         circleRandom.innerHTML = 
         `<div class="text" >
-                    <h2>Wpisz pojedynczo słowa, które chcesz umieścić na kole</h2>
+                    <h2>Wpisz pojedynczo słowa, które chcesz umieścić na kole (maksymalnie 10 elementów)</h2>
                     <div class="input">
                         <input type="text" id="circle-input" placeholder="Co chcesz wylosować ...">
                         <button class="input-button">Dodaj</button>
@@ -789,18 +794,29 @@ function circleBack(){
 //============================================================= 
 const min = document.querySelector('#min').value;
 const max = document.querySelector('#max').value;
-const decimal = document.querySelector('#decimal').value;
 const decimalInput = document.querySelector('#decimal');
+const decimalError = document.querySelector('#number .error');
 const numberRandom = document.querySelector('#number')
 const numberButton = document.querySelector('#number-button');
 const checkbox = document.querySelector('#numberSwitch');
 const numberResult = document.querySelector('#number-result');
+
 checkbox.addEventListener('input',()=>{
         if(checkbox.checked){
         decimalInput.disabled = false;
     }else{
         decimalInput.disabled = true;
-    }
+    }    
+    decimalInput.addEventListener('input',()=>{
+        let decimal = document.querySelector('#decimal').value;
+        if(decimal > 40){
+            decimalError.style.display = 'block';
+            numberButton.disabled = true;
+        }else{
+            decimalError.style.display = 'none';
+            numberButton.disabled = false;
+        }
+    })
 })
 numberButton.addEventListener('click',()=>{
     const min = document.querySelector('#min').value;
@@ -1424,15 +1440,28 @@ function coinFlip(){
 //============================================================= 
 const diceRandom = document.querySelector('#dice')
 function rollDice(){
-    let dicesValue = 0;
     let roll = document.querySelector('#dice-button')
+    let dicesCount = document.querySelector('#dices-count');
+    dicesCount.addEventListener('input',()=>{
+        let howMany = document.querySelector('#dices-count').value;
+        let error = document.querySelector('#dice .error');
+        if(howMany > 4){
+            error.style.display = 'block';
+            roll.disabled = true;
+        }else{
+            error.style.display = 'none';
+            roll.disabled = false;
+        }
+    })
     roll.addEventListener('click', ()=>{
+        let dicesValue = 0;
+        let howMany = document.querySelector('#dices-count').value;       
         let cup = document.querySelector('.cup')
         cup.classList.add('animation-cup')
         let id = 0;
-        let result = document.querySelector('#dice-result');
         // create dices with dots
-        let howMany = document.querySelector('#dices-count').value;
+        let result = document.querySelector('#dice-result');
+        result.innerHTML =''
         let container = document.querySelector('#dices-container .dices')
         container.classList.add('animation-dices')
         container.innerHTML = '';

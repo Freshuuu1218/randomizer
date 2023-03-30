@@ -200,6 +200,7 @@ section{
     row-gap: 3em;
 }
 .type{
+    transition: all .2s;
     color: #eee;
     font-size: 1.5em;
     background-color: rgba(0, 0,0,.2);
@@ -283,6 +284,10 @@ section{
     color: #fff;
     cursor: pointer;
 }
+#standard .text .input button:hover,
+#circle .text .input button:hover{
+    box-shadow: inset -10px -5px 15px rgba(0, 0, 0, .25) ;
+}
 #standard .text .added,
 #circle .text .added{
     display: grid;
@@ -305,6 +310,7 @@ section{
 }
 #standard-button,
 #circle-button{
+    transition: all .2s;
     width: 20em;
     height: 2em;
     font-size: 1.5em;
@@ -422,7 +428,7 @@ section{
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    background-color: black;
+    background-color: #303030;
     z-index: 100;
 }
 @keyframes spin{
@@ -554,6 +560,9 @@ section{
     margin: 0 2em;
     display: none;
 }
+#number .switcher label{
+    cursor: pointer;
+}
 #number .switcher label {
     width: 3.5em;
     height: 1.5em;
@@ -591,6 +600,17 @@ section{
     border: 0;
     border-radius: 2em;
 }
+#number .input .error{
+    color: rgb(244, 78, 78);
+    position: absolute;
+    margin-top: 4em;
+    margin-left: .75em;
+}
+#number .input input:focus,
+#number .input input:active{
+    outline: 0;
+    box-shadow: 0 0 10px rgba(0, 191, 166, .8);
+}
 #number .input label{
     color: #eee;
     margin-left: .5em;
@@ -599,6 +619,7 @@ section{
 #number button {
     font-size: 2em;
     background-color: rgb(0, 191, 166);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .4);;
     border: 0;
     color: #fff;
     border-radius: 2em;
@@ -606,6 +627,11 @@ section{
     width: 60%;
     margin-left: 20%;
     margin-top: .5em;
+}
+#number button:hover{
+    cursor: pointer;
+    transform: translateY(5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 #number .result {
     color: #eee;
@@ -822,11 +848,17 @@ blockquote::after{
 #new-quote{
     margin-top: 2em;
     background-color: rgb(0, 191, 166);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     color: #fff;
     border: 0;
     border-radius: 2em;
     padding: 1em 2em;
     font-size: 1.5em;
+}
+#new-quote:hover{
+    cursor: pointer;
+    transform: translateY(5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 /* coin randomizer */
 #coin {
@@ -838,11 +870,18 @@ blockquote::after{
 #coin-button {
     padding: .75em 2em;
     background-color: rgb(0, 191, 166);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 2em;
     color: #fff;
     font-size: 1.5em;
     margin-bottom: 2em;
+    transition: all .2s;
+}
+#coin-button:hover{
+    cursor: pointer;
+    transform: translateY(5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 #coin-random {
     position: relative;
@@ -924,19 +963,35 @@ blockquote::after{
     border-radius: 2em;
     margin:  1em 0;
 }
+#dice .inputs input:active,
+#dice .inputs input:focus{
+    outline: 0;
+    box-shadow: 0 0 15px rgba(0, 191, 166, .5);
+}
 /* remove arrows from input */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
         -webkit-appearance: none;
 }
+#dice .inputs .error{
+    color: rgb(244, 78, 78);
+    position: absolute;
+    margin-top:3em;
+}
 #dice .inputs button{
     background-color: rgb(0, 191, 166);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, .5);
     color: #fff;
     font-size: 1.5em;
     padding: .75em 2.5em;
     border: 0;
     border-radius: 2em ;
     cursor: pointer;
+}
+#dice .inputs button:hover{
+    cursor: pointer;
+    transform: translateY(5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
 }
 #dices-container{
     height: 40%;
