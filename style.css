@@ -191,6 +191,67 @@ section{
     box-shadow: 0 0 20px rgba(0, 191, 166,.8);
     cursor: pointer;
 }
+/* how it works */
+#howItWorks{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 5em;
+}
+.accordion {
+    color: #eee;
+    width: 60%;
+}
+.accordion h1{
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1.5em;
+}
+.accordion .container {
+    position: relative;
+    margin: 10px;
+}
+.accordion .label {
+    position: relative;
+    padding: .5em 0;
+    font-size: 1.25em;
+    color: #eee;
+    cursor: pointer;
+}
+.accordion .label::before {
+    content: "+";
+    color: rgb(0, 191, 166);
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    font-size: 1.5em;
+    transform: translateY(-50%);
+}
+.accordion .content {
+    position: relative;
+    height: 0;
+    font-size: 1.05em;
+    text-align: justify;
+    width: 780px;
+    overflow: hidden;
+    transition: all .5s;
+}
+.accordion .content ul{
+    margin-left: 2em;
+    list-style: decimal;
+}
+.accordion .content ul li{
+    margin: .5em 0;
+}
+.accordion .container.active .content{
+    height: auto;
+}
+
+
+.accordion .container.active .label::before {
+    content: "-";
+    font-size: 1.5em;
+}
 /* choose randomoziation type */
 #type-of-randomize{
     padding: 10%;

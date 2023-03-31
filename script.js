@@ -14,6 +14,7 @@ const diceType = document.querySelector('#dice-type');
 // navigation buttons
 const mainPageButton = document.querySelector('#mainPageNav');
 const howToUse = document.querySelector('#howToUse');
+const howItWorks = document.querySelector('#howItWorks');
 const contactButton = document.querySelector('#contact');
 
 // randomization sections start
@@ -39,7 +40,13 @@ function preloader(where){
         resultSection.style.display = 'block'
 	}, 2000);
 }
-
+// how it works section
+const accordion = document.querySelectorAll('.container');
+for(i=0; i<accordion.length; i++){
+    accordion[i].addEventListener('click', function(){
+        this.classList.toggle('active')
+    })
+}
 //============================================================= 
 //=============================================================
                     // list randomizer
@@ -1610,6 +1617,10 @@ mainPageButton.addEventListener('click',()=>{
 startButton.addEventListener('click',()=>{
     displayNone();
     chooseTypePage.style.display='grid'
+})
+howToUse.addEventListener('click',()=>{
+    displayNone();
+    howItWorks.style.display='flex';
 })
 listType.addEventListener('click',()=>{
     displayNone();
